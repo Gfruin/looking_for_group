@@ -31,9 +31,9 @@ class App extends Component {
     render() {
       return (
         <div className="App">
-          <Login login={this.login}/>
+          {this.state.logged == false ? <Register login={this.login}/> : null }
+          {this.state.logged == false ? <Login login={this.login}/> : null }
           <Logout logout={this.logout}/>
-          <Register login={this.login}/>
         </div>
       )
   }

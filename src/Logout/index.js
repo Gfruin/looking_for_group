@@ -6,7 +6,8 @@ class Logout extends Component {
 		super();
 		this.state = {
 			email: '',
-			password: ''
+			password: '',
+			logged: true
 		}
 	}
 	handleSubmit = async (e) => {
@@ -17,7 +18,8 @@ class Logout extends Component {
 				credentials: 'include'
 			})
 			console.log(logoutResponse, 'here is the logoutResponse');
-
+			this.props.logout(this.state.email, this.state.password, this.state.logged)
+			console.log(this.state.logged);
 
 		} catch(err){
 			console.log(err);

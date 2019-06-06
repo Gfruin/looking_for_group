@@ -24,20 +24,22 @@ class Login extends Component {
 			})
 			const parsedResponse = await loginResponse.json()
 			console.log(parsedResponse, 'here is the parsedResponse');
-
+			this.props.login(this.state.email, this.state.password)
 		} catch(err) {
 			console.log(err);
 		}
 	}
 	render() {
 		return(
-			<form onSubmit={this.handleSubmit}>
-			Email:
-			<input type="text" name="email" onChange={this.handleChange}/>
-			<input type="text" name="password" onChange={this.handleChange}/>
-			<button>Submit</button>
-			</form>
-
+			<div>
+				<h3>Login</h3>
+				<form onSubmit={this.handleSubmit}>
+				Email:
+				<input type="text" name="email" onChange={this.handleChange}/>
+				<input type="text" name="password" onChange={this.handleChange}/>
+				<button>Login</button>
+				</form>
+			</div>
 		)
 	}
 }

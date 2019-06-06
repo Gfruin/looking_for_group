@@ -28,6 +28,7 @@ class Register extends Component {
 			})
 			const parsedResponse = await registerResponse.json();
 			console.log(parsedResponse, "here is the parsedResponse");
+			this.props.login()
 		} catch(err) {
 			console.log(err);
 		}
@@ -38,6 +39,7 @@ class Register extends Component {
 	render() {
 		return(
 			<div>
+				<h3>Register</h3>
 				<form onSubmit={this.handleSubmit}>
 					Email:
 					<input type="text" name="email" onChange={this.handleChange}/>
