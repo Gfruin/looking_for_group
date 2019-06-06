@@ -31,6 +31,8 @@ class App extends Component {
     render() {
       return (
         <div className="App">
+          <Login login={this.login}/>
+          <Logout logout={this.logout}/>
           <Register login={this.login}/>
         </div>
       )
