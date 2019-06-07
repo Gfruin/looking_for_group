@@ -21,6 +21,7 @@ class App extends Component {
   }
   componentDidMount() {
     console.log(this.state);
+    this.showEdit()
   }
     login = (user, e) => {
       console.log(user);
@@ -71,6 +72,7 @@ class App extends Component {
         email: email
       })
     }
+
     showEdit = () => {
       this.setState({
         showEdit: true

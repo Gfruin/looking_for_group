@@ -7,9 +7,10 @@ class UserContainer extends Component {
 		this.state = {
 			users: [],
 			matchedUsers: [],
+			currentUser: null,
 			userId: props.id,
 			showUser: false,
-			showEdit: true,
+			showEdit: false,
 			userToEdit: {
 				_id: props.id,
 				gamemaster: props.state.gamemaster,
@@ -43,8 +44,10 @@ class UserContainer extends Component {
 		// this.setUserToEdit()
 		console.log(this.state, 'here is state in UserContainer');
 		console.log(this.props, 'here is props in UserContainer');
-		if(this.showEdit === false) {
-			this.props.showEdit()
+		console.log(this.state.showEdit, 'here is the showEdit state in UserContainer');
+		if(this.state.showEdit === false) {
+			this.showEdit()
+			console.log('this.showEdit has fired! in UserContainer');
 		}
 	}
 	getAllUsers = async () => {
@@ -70,6 +73,16 @@ class UserContainer extends Component {
 			const foundUsers = await userResponse.json()
 			this.setState({matchedUsers: foundUsers.data})
 			console.log(this.state.matchedUsers, 'here are the matched users');
+	}
+
+	getUserProfile = async () => {
+		const userProfileResponse = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/v1/user/' + this.state.userId)
+		if(userProfileResponse.status !== 200) {
+			throw Error(userProfileResponse.statusText)
+		}
+		const foundUserProfile = await userProfileResponse.json()
+		this.setState({currentUser: foundUserProfile.data})
+		console.log(this.state.currentUser, 'here is the currentUser in UserContainer');
 	}
 
 	closeAndEdit = async (e) => {
@@ -164,11 +177,11 @@ class UserContainer extends Component {
 			userToEdit: user
 		})
 	}
-	// showEdit = (user) => {
-	// 	this.setState({
-	// 		showEdit: true
-	// 	})
-	// }
+	showEdit = (user) => {
+		this.setState({
+			showEdit: true
+		})
+	}
 
 	render() {
 		console.log(this.state, 'here is the state in UserContainer');
