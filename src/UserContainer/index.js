@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-
+import EditUser from '../EditUser'
 
 class UserContainer extends Component {
 	constructor() {
@@ -8,7 +8,7 @@ class UserContainer extends Component {
 			users: [],
 			matchedUsers: [],
 			userToEdit: {
-				id: null,
+				_id: '',
 				gamemaster: false,
 				playerCharacter: true,
 				lookingForGroup: true,
@@ -50,43 +50,44 @@ class UserContainer extends Component {
 
 			},
 			showUser: false,
+			showEdit: true
 		}
 		this.handleInputChange = this.handleInputChange.bind(this);
 	}
 
 	componentDidMount(){
-
+		// this.props.login(this.state.userToEdit.username, this.state.userToEdit.password, this.state.userToEdit.email)
+		console.log(this.state);
 	}
 	getAllUsers = async () => {
 		try {
-			const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/v1/user',{
+			const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/v1/user')
 				if(response.status !== 200) {
 					throw Error(response.statusText)
 				}
 				const usersParsed = await response.json()
 				this.setState({users: usersParsed.data})
 				console.log(this.state.users, 'here are the users on the getAllUsers');
-			})
+			
 		} catch(err) {
 			console.log(err);
 		}
 	}
 
 	getUsersByCat = async () => {
-		const userResponse = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/v1/user/match', {
-			if(response.status !== 200) {
-				throw Error(response.statusText)
+		const userResponse = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/v1/user/match') 
+			if(userResponse.status !== 200) {
+				throw Error(userResponse.statusText)
 			}
 			const foundUsers = await userResponse.json()
 			this.setState({matchedUsers: foundUsers.data})
 			console.log(this.state.matchedUsers, 'here are the matched users');
-		})
 	}
 
-	closeAndEdit = async () => {
+	closeAndEdit = async (e) => {
 		e.preventDefault()
 		try{
-			const editResponse = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/v1/user/' + this.state.userToEdit.id, {
+			const editResponse = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/v1/user/' + this.state.userToEdit._id , {
 				method: 'PUT',
 				credentials: 'include',
 				body: JSON.stringify(this.state.userToEdit),
@@ -94,10 +95,13 @@ class UserContainer extends Component {
 					'Content-type': 'application/json'
 				}
 			})
+			console.log(editResponse);
 			const parsedResponse = await editResponse.json();
+			console.log(parsedResponse);
 			const editedUserArray = this.state.users.map((user) => {
-				if(user.id === this.state.userToEdit.id) {
+				if(user._id === this.state.userToEdit._id) {
 					user = parsedResponse.data
+					console.log(editedUserArray);
 				}
 				return user
 			})
@@ -105,6 +109,7 @@ class UserContainer extends Component {
 				users: editedUserArray,
 				showUser: false
 			})
+			console.log(this.state);
 
 		} catch(err){
 			console.log(err);
@@ -144,7 +149,13 @@ class UserContainer extends Component {
 	render() {
 		return(
 			<div>
-
+				{this.state.showEdit? 
+					<EditUser
+					closeAndEdit={this.closeAndEdit}
+					handleInputChange={this.handleInputChange}
+					handleFormChange={this.handleFormChange}
+					/>
+				: null}
 			</div>
 
 
@@ -152,3 +163,6 @@ class UserContainer extends Component {
 			)
 	}
 }
+
+
+export default UserContainer;

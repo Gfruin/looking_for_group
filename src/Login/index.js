@@ -5,7 +5,10 @@ class Login extends Component {
 		super();
 		this.state = {
 			email: '',
-			password: ''
+			password: '',
+			username: '',
+			_id: ''
+			
 		}
 	}
 	handleChange = (e) => {
@@ -22,9 +25,11 @@ class Login extends Component {
 					'Content-type' : 'application/json'
 				}
 			})
+			console.log(loginResponse, 'here is the loginResponse');
 			const parsedResponse = await loginResponse.json()
 			console.log(parsedResponse, 'here is the parsedResponse');
-			this.props.login(this.state.email, this.state.password)
+			this.props.login(this.state.email, parsedResponse.data.username, this.state.password, parsedResponse.data._id)
+			this.props.setUserToEdit(parsedResponse.data._id, parsedResponse.data.username, this.state.password, this.state.email)
 		} catch(err) {
 			console.log(err);
 		}
