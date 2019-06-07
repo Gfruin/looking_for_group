@@ -2,62 +2,50 @@ import React, {Component} from 'react'
 import EditUser from '../EditUser'
 
 class UserContainer extends Component {
-	constructor() {
+	constructor(props) {
 		super();
 		this.state = {
 			users: [],
 			matchedUsers: [],
-			userToEdit: {
-				_id: '',
-				gamemaster: false,
-				playerCharacter: true,
-				lookingForGroup: true,
-				gameMaterials: '',
-				experience: null,
-				description: '',
-				firstName: '',
-				lastName: '',
-				password: '',
-				username: {
-					type: '',
-					unique: true
-				},
-				email: {
-					type: '',
-					unique: true
-				},
-				location: {
-					address: '',
-					latitude: '',
-					longitude: '',
-					zipCode: ''
-				},
-				gamesystem: {
-					dnd5e: false,
-					pathfinder: false,
-					starfinder: false,
-					dnd3_5: false,
-					callOfCthulu: false,
-					other: '',
-				},
-				gamestyle: {
-					roleplay: false,
-					combat: false,
-					dungeonCrawl: false,
-					other: ''
-				}
-
-
-			},
+			userId: props.id,
 			showUser: false,
-			showEdit: true
+			showEdit: true,
+			userToEdit: {
+				_id: props.id,
+				gamemaster: props.state.gamemaster,
+				playerCharacter: props.state.playerCharacter,
+				lookingForGroup: props.state.lookingForGroup,
+				gameMaterials: props.state.gameMaterials,
+				experience: props.state.experience,
+				description: props.state.description,
+				firstName: props.state.firstName,
+				lastName: props.state.lastName,
+				address: props.state.address,
+				latitude: props.state.latitude,
+				longitude: props.state.longitude,
+				zipCode: props.state.zipCode,
+				dnd5e: props.state.dnd5e,
+				pathfinder: props.state.pathfinder,
+				starfinder: props.state.starfinder,
+				dnd3_5: props.state.dnd3_5,
+				callOfCthulu: props.state.callOfCthulu,
+				other: props.state.other,
+				roleplay: props.state.roleplay,
+				combat: props.state.combat,
+				dungeonCrawl: props.state.dungeonCrawl,
+				other: props.state.other
+			},
 		}
 		this.handleInputChange = this.handleInputChange.bind(this);
 	}
 
 	componentDidMount(){
-		// this.props.login(this.state.userToEdit.username, this.state.userToEdit.password, this.state.userToEdit.email)
-		console.log(this.state);
+		// this.setUserToEdit()
+		console.log(this.state, 'here is state in UserContainer');
+		console.log(this.props, 'here is props in UserContainer');
+		if(this.showEdit === false) {
+			this.props.showEdit()
+		}
 	}
 	getAllUsers = async () => {
 		try {
@@ -87,10 +75,40 @@ class UserContainer extends Component {
 	closeAndEdit = async (e) => {
 		e.preventDefault()
 		try{
-			const editResponse = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/v1/user/' + this.state.userToEdit._id , {
+			this.state.userToEdit.zipCode = parseInt(this.state.userToEdit.zipCode)
+			const editResponse = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/v1/user/' + this.state.userId , {
 				method: 'PUT',
 				credentials: 'include',
-				body: JSON.stringify(this.state.userToEdit),
+				body: JSON.stringify({
+					gamemaster: this.state.userToEdit.gamemaster,
+					playerCharacter: this.state.userToEdit.playerCharacter,
+					lookingForGroup: this.state.userToEdit.lookingForGroup,
+					gameMaterials: this.state.userToEdit.gameMaterials,
+					experience: this.state.userToEdit.experience,
+					description: this.state.userToEdit.description,
+					firstName: this.state.userToEdit.firstName,
+					lastName: this.state.userToEdit.lastName,
+					location: {
+						address: this.state.userToEdit.address,
+						latitude: this.state.userToEdit.latitude,
+						longitude: this.state.userToEdit.longitude,
+						zipCode: this.state.userToEdit.zipCode
+					},
+					gamesystem: {
+						dnd5e: this.state.userToEdit.dnd5e,
+						pathfinder: this.state.userToEdit.pathfinder,
+						starfinder: this.state.userToEdit.starfinder,
+						dnd3_5: this.state.userToEdit.dnd3_5,
+						callOfCthulu: this.state.userToEdit.callOfCthulu,
+						other: this.state.userToEdit.other
+					},
+					gamestyle: {
+						roleplay: this.state.userToEdit.roleplay,
+						combat: this.state.userToEdit.combat,
+						dungeonCrawl: this.state.userToEdit.dungeonCrawl,
+						other: this.state.userToEdit.other
+					}
+				}),
 				headers: {
 					'Content-type': 'application/json'
 				}
@@ -123,6 +141,7 @@ class UserContainer extends Component {
 				[e.target.name]: e.target.value
 			}
 		})
+		console.log(this.userToEdit);
 	}
 	handleInputChange(e) {
     const target = e.target;
@@ -145,11 +164,18 @@ class UserContainer extends Component {
 			userToEdit: user
 		})
 	}
+	// showEdit = (user) => {
+	// 	this.setState({
+	// 		showEdit: true
+	// 	})
+	// }
 
 	render() {
+		console.log(this.state, 'here is the state in UserContainer');
+		console.log(this.state.showEdit, 'here is the this.state.showEdit in UserContainer');
 		return(
 			<div>
-				{this.state.showEdit? 
+				{this.state.showEdit === true ? 
 					<EditUser
 					closeAndEdit={this.closeAndEdit}
 					handleInputChange={this.handleInputChange}

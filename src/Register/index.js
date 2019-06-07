@@ -7,7 +7,8 @@ class Register extends Component {
 			username: '',
 			email: '',
 			password: '',
-			registered: false
+			registered: false,
+			showEdit: false
 		}
 	}
 	handleChange = async (e) => {
@@ -28,7 +29,10 @@ class Register extends Component {
 			})
 			const parsedResponse = await registerResponse.json();
 			console.log(parsedResponse, "here is the parsedResponse");
-			this.props.login()
+			this.props.login(this.state.username, this.state.email, this.state.password, this.state.registered, parsedResponse.data)
+			this.props.showEdit()
+			this.props.setUserToEdit(parsedResponse.data)
+			console.log(this.state.showEdit);
 		} catch(err) {
 			console.log(err);
 		}
