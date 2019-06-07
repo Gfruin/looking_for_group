@@ -45,11 +45,13 @@ class UserContainer extends Component {
 					combat: false,
 					dungeonCrawl: false,
 					other: ''
-				},
-				showUser: false,
+				}
 
-			}
+
+			},
+			showUser: false,
 		}
+		this.handleInputChange = this.handleInputChange.bind(this);
 	}
 
 	componentDidMount(){
@@ -117,6 +119,19 @@ class UserContainer extends Component {
 			}
 		})
 	}
+	handleInputChange(e) {
+    const target = e.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    	this.setState({
+    		userToEdit: {
+    			...this.state.userToEdit,
+      			[name]: value
+    		}
+    	});
+	}
+
 
 	showUser = (user) => {
 		console.log(user, '<-----here is the showUser');
@@ -129,7 +144,7 @@ class UserContainer extends Component {
 	render() {
 		return(
 			<div>
-			
+
 			</div>
 
 
