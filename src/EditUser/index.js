@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from 'react-bootstrap/Button';
 
 const EditUser = (props) => {
 	console.log(props.userToEdit, 'here is the props.userToEdit in EditUser');
@@ -13,13 +14,15 @@ const EditUser = (props) => {
           		GameMaster:
           		<input name="gamemaster" type="checkbox" value={props.userToEdit.gamemaster} checked={props.userToEdit.gamemaster === false ? false : true} onChange={props.handleInputChange}/> <br/>
           		Player:
-          		<input name="playerCharacter" type="checkbox" value={props.userToEdit.playerCharacter} checked={props.userToEdit.playerCharacter === false ? false : true} onChange={props.handleInputChange}/> <br/>
+          		<input defaultValue={props.userToEdit.playerCharacter} name="playerCharacter" type="checkbox"  checked={props.userToEdit.playerCharacter === false ? false : true} onChange={props.handleInputChange}/> <br/>
 				</label>
+				<br/>
+				<br/>
 				<label>
 				What GameSystem do you enjoy playing? <br/>
 				
 				Dungeons and Dragons 5e:
-          		<input name="dnd5e" type="checkbox" value={props.userToEdit.gamesystem} checked={props.userToEdit.gamesystem === false ? false : true} onChange={props.handleInputChange}/> <br/>
+          		<input name="dnd5e" type="checkbox" value={props.userToEdit.gamesystem.dnd5e} checked={props.userToEdit.gamesystem.dnd5e === false ? false : true} onChange={props.handleInputChange}/> <br/>
           		Pathfinder:
           		<input name="pathfinder" type="checkbox" value={props.userToEdit.gamesystem.pathfinder} checked={props.userToEdit.gamesystem.pathfinder === false ? false : true} onChange={props.handleInputChange}/> <br/>
           		StarFinder:
@@ -32,7 +35,10 @@ const EditUser = (props) => {
           		<label>
           		Other:
           		<input name="othergamesystem" type="text" value={props.userToEdit.gamesystem.other} onChange={props.handleFormChange} /> <br/>
-          		</label>	
+          		</label>
+          		<br/>
+          		<br/>
+
           		<label>
           		Choose Your Preferred Gameplay Style: <br/>
           		Roleplay (gameplay with a focus on collaborative storytelling)
@@ -44,30 +50,50 @@ const EditUser = (props) => {
           		Other
           		<input name="othergamestyle" type="text" value={props.userToEdit.gamestyle.other} onChange={props.handleFormChange} /> <br/>
 				</label>
+          		<br/>
+          		<br/>
+
 				<label>
 				Years of Experience
 				<input type="number" name="experience" onChange={props.handleFormChange} value={props.userToEdit.experience}/> <br/>
 				</label>
+          		<br/>
+          		<br/>
+
 				<label>
 				What Game Materials do you have? (i.e. dice, maps, miniatures, etc)
 				<textarea type="text" name="gameMaterials" onChange={props.handleFormChange} value={props.userToEdit.gameMaterials}/> <br/>
 				</label>
+          		<br/>
+          		<br/>
+
 				<label>
 				Your Description:
 				<textarea type="text" name="description" onChange={props.handleFormChange} value={props.userToEdit.description}/> <br/>
 				</label>
+          		<br/>
+          		<br/>
+
 				<label>
 				First Name:
 				<input type="text" name="firstName" onChange={props.handleFormChange} value={props.userToEdit.firstName}/> <br/>
 				</label>
+          		<br/>
+          		<br/>
+
 				<label>
 				Last Name:
 				<input type="text" name="lastName" onChange={props.handleFormChange} value={props.userToEdit.lastName}/> <br/>
 				</label>
+          		<br/>
+          		<br/>
+
 				<label>
 				Address:
 				<input type="text" name="address" onChange={props.handleFormChange} value={props.userToEdit.address}/> <br/>
-				</label>			
+				</label>
+          		<br/>
+
 				<button>Submit</button>
 			</form>
 		</div>

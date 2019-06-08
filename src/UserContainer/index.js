@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import EditUser from '../EditUser'
 import UserProfile from '../UserProfile'
+import Button from 'react-bootstrap/Button';
 
 class UserContainer extends Component {
 	constructor(props) {
@@ -146,7 +147,7 @@ class UserContainer extends Component {
 				showUser: false
 			})
 			console.log(this.state);
-			this.getUserProfile()
+			// this.getUserProfile()
 
 		} catch(err){
 			console.log(err);
@@ -201,7 +202,6 @@ class UserContainer extends Component {
 					closeAndEdit={this.closeAndEdit}
 					handleInputChange={this.handleInputChange}
 					handleFormChange={this.handleFormChange}
-					
 					/>
 				: null}
 				{this.state.showUser === true ?

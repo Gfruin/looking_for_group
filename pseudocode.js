@@ -13,3 +13,17 @@
 				// Reset Email:
 				// <input type="text" name="email" onChange={props.handleFormChange} value={props.userToEdit}/> <br/>
 				// </label>
+
+
+
+
+// _renderObject(){
+//     return Object.keys(props.currentUser).map(currentUser, i) => {
+//         return (
+//             <div>
+//                 username is: {props.currentUser[currentUser].username} ;
+//                 name is: {props.currentUser[currentUser].gamesystem}
+//             </div>
+//         )
+//     })
+// }
