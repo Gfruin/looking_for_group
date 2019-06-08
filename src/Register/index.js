@@ -29,9 +29,9 @@ class Register extends Component {
 			})
 			const parsedResponse = await registerResponse.json();
 			console.log(parsedResponse, "here is the parsedResponse");
-			this.props.login(this.state.username, this.state.email, this.state.password, this.state.registered, parsedResponse.data)
+			this.props.login(parsedResponse.data)
 			this.props.showEdit()
-			this.props.setUserToEdit(parsedResponse.data)
+			// this.props.setUserToEdit(parsedResponse.data)
 			console.log(this.state.showEdit);
 		} catch(err) {
 			console.log(err);

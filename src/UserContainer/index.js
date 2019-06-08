@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import EditUser from '../EditUser'
+import UserProfile from '../UserProfile'
 
 class UserContainer extends Component {
 	constructor(props) {
@@ -11,31 +12,32 @@ class UserContainer extends Component {
 			userId: props.id,
 			showUser: false,
 			showEdit: false,
-			userToEdit: {
-				_id: props.id,
-				gamemaster: props.state.gamemaster,
-				playerCharacter: props.state.playerCharacter,
-				lookingForGroup: props.state.lookingForGroup,
-				gameMaterials: props.state.gameMaterials,
-				experience: props.state.experience,
-				description: props.state.description,
-				firstName: props.state.firstName,
-				lastName: props.state.lastName,
-				address: props.state.address,
-				latitude: props.state.latitude,
-				longitude: props.state.longitude,
-				zipCode: props.state.zipCode,
-				dnd5e: props.state.dnd5e,
-				pathfinder: props.state.pathfinder,
-				starfinder: props.state.starfinder,
-				dnd3_5: props.state.dnd3_5,
-				callOfCthulu: props.state.callOfCthulu,
-				other: props.state.other,
-				roleplay: props.state.roleplay,
-				combat: props.state.combat,
-				dungeonCrawl: props.state.dungeonCrawl,
-				other: props.state.other
-			},
+			userToEdit: props.userData
+				// {
+				// _id: props.id,
+				// gamemaster: props.state.gamemaster,
+				// playerCharacter: props.state.playerCharacter,
+				// lookingForGroup: props.state.lookingForGroup,
+				// gameMaterials: props.state.gameMaterials,
+				// experience: props.state.experience,
+				// description: props.state.description,
+				// firstName: props.state.firstName,
+				// lastName: props.state.lastName,
+				// address: props.state.address,
+				// latitude: props.state.latitude,
+				// longitude: props.state.longitude,
+				// zipCode: props.state.zipCode,
+				// dnd5e: props.state.dnd5e,
+				// pathfinder: props.state.pathfinder,
+				// starfinder: props.state.starfinder,
+				// dnd3_5: props.state.dnd3_5,
+				// callOfCthulu: props.state.callOfCthulu,
+				// other: props.state.other,
+				// roleplay: props.state.roleplay,
+				// combat: props.state.combat,
+				// dungeonCrawl: props.state.dungeonCrawl,
+				// other: props.state.other
+			//}
 		}
 		this.handleInputChange = this.handleInputChange.bind(this);
 	}
@@ -45,7 +47,7 @@ class UserContainer extends Component {
 		console.log(this.state, 'here is state in UserContainer');
 		console.log(this.props, 'here is props in UserContainer');
 		console.log(this.state.showEdit, 'here is the showEdit state in UserContainer');
-		if(this.state.showEdit === false) {
+		if(this.state.showEdit === false && this.state.showUser !== true) {
 			this.showEdit()
 			console.log('this.showEdit has fired! in UserContainer');
 		}
@@ -83,10 +85,13 @@ class UserContainer extends Component {
 		const foundUserProfile = await userProfileResponse.json()
 		this.setState({currentUser: foundUserProfile.data})
 		console.log(this.state.currentUser, 'here is the currentUser in UserContainer');
+		this.showUser()
+		console.log(this.state.showUser, 'here is the current showUser state');
 	}
 
 	closeAndEdit = async (e) => {
 		e.preventDefault()
+		console.log("hitting the closeAndEdit");
 		try{
 			this.state.userToEdit.zipCode = parseInt(this.state.userToEdit.zipCode)
 			const editResponse = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/v1/user/' + this.state.userId , {
@@ -141,6 +146,7 @@ class UserContainer extends Component {
 				showUser: false
 			})
 			console.log(this.state);
+			this.getUserProfile()
 
 		} catch(err){
 			console.log(err);
@@ -169,12 +175,12 @@ class UserContainer extends Component {
     	});
 	}
 
-
 	showUser = (user) => {
 		console.log(user, '<-----here is the showUser');
 		this.setState({
 			showUser: true,
-			userToEdit: user
+			userToEdit: user,
+			showEdit: false
 		})
 	}
 	showEdit = (user) => {
@@ -186,14 +192,21 @@ class UserContainer extends Component {
 	render() {
 		console.log(this.state, 'here is the state in UserContainer');
 		console.log(this.state.showEdit, 'here is the this.state.showEdit in UserContainer');
+		console.log(this.state.userToEdit, 'here is the userToEdit in UserContainer');
 		return(
 			<div>
 				{this.state.showEdit === true ? 
 					<EditUser
+					userToEdit={this.state.userToEdit}
 					closeAndEdit={this.closeAndEdit}
 					handleInputChange={this.handleInputChange}
 					handleFormChange={this.handleFormChange}
+					
 					/>
+				: null}
+				{this.state.showUser === true ?
+					<UserProfile
+					currentUser={this.state.currentUser}/> 
 				: null}
 			</div>
 

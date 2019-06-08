@@ -29,7 +29,9 @@ class Login extends Component {
 			const parsedResponse = await loginResponse.json()
 			console.log(parsedResponse, 'here is the parsedResponse');
 			this.props.login(parsedResponse.data)
-			this.props.setUserToEdit(parsedResponse.data)
+			// this.props.setUserToEdit(parsedResponse.data)
+			console.log('is this working?');
+			// console.log(this.props.setUserToEdit(parsedResponse.data), 'here is the props of setUserToEdit in Login');
 		} catch(err) {
 			console.log(err);
 		}
@@ -41,7 +43,7 @@ class Login extends Component {
 				<form onSubmit={this.handleSubmit}>
 				Email:
 				<input type="text" name="email" onChange={this.handleChange}/>
-				<input type="text" name="password" onChange={this.handleChange}/>
+				<input type="password" name="password" onChange={this.handleChange}/>
 				<button>Login</button>
 				</form>
 			</div>
