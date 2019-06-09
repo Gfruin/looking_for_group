@@ -6,7 +6,8 @@ class MatchedUsersContainer extends Component {
 		super();
 		this.state = {
 			matchedUsers: props.matchedUsers,
-			matchedUserShow: null
+			matchedUserShow: null,
+			matchedUserShowGM: null
 		}
 	}
 	setMatchedUserShow = (e) => {
@@ -28,13 +29,19 @@ class MatchedUsersContainer extends Component {
 		console.log("here is the player:")
 		console.log(player)
 
+		const gamemasterIndex = e.currentTarget.dataset.gamemasterIndex
+
+		const gamemaster = this.state.matchedUsers.results[key].gamemasters[gamemasterIndex]
+
 		this.setState({
-			matchedUserShow: player
+			matchedUserShow: player,
+			matchedUserShowGM: gamemaster
 		})
 	}
 	clearMatchedUserShow = () => {
 		this.setState({
-			matchedUserShow: null
+			matchedUserShow: null,
+			matchedUserShowGM: null
 		})
 	}
 	render() {
@@ -49,19 +56,29 @@ class MatchedUsersContainer extends Component {
 			const playerList = this.state.matchedUsers.results[key].players.map((player, j) => {
 				return(
 					<div key={player._id}>
-						<li> {player.username} </li>
+						<div> {player.username} </div>
 						<button data-key={key} data-player-index={j} onClick={this.setMatchedUserShow}> View Player Details </button>
 					</div>
 				)
 			})
 
+			const gamemasterList = this.state.matchedUsers.results[key].gamemasters.map((gamemaster, k) => {
+				return(
+					<div key={gamemaster._id}>
+						<div> {gamemaster.username}</div>
+						<button data-key={key} data-gamemaster-index={k} onClick={this.setMatchedUserShow}> View GameMaster Details </button>
+					</div>
+					)
+			})
+
 			return(
 				<div>
-					<div key={"gamesystem-" + i}>
+					<strong key={"gamesystem-" + i}>
 						{key}
-					</div>
+					</strong>
 					<ul>
 						{playerList}
+						{gamemasterList}
 					</ul>
 				</div>
 			)
@@ -84,25 +101,6 @@ class MatchedUsersContainer extends Component {
 
 
 
-// < div> 
-// 						<h3>D&D Fifth Edition Players:</h3>
-// 						<br/>
-// 							Usernames:
-// 							{this.state.matchedUsers.results.fifthEd.players[i].username}
-// 						<br/>
-// 							Gamestyle: Roleplay {this.state.matchedUsers.results.fifthEd.players[i].gamestyle.roleplay}
-// 						<br/>
-// 							Gamestyle: Combat {this.state.matchedUsers.results.fifthEd.players[i].gamestyle.combat}
-
-// 						<br/>
-// 							Gamestyle: Dungeon Crawl {this.state.matchedUsers.results.fifthEd.players[i].gamestyle.dungeonCrawl}
-
-// 						<br/>
-
-// 					</div>
-// 					<div></div>
-// 					<div></div>
-// 					<div></div>
 
 
 export default MatchedUsersContainer;
