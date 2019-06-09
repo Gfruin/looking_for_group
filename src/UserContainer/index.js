@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import EditUser from '../EditUser'
 import UserProfile from '../UserProfile'
 import Button from 'react-bootstrap/Button';
-import MatchedUsers from '../MatchedUsers';
+import MatchedUsersContainer from '../MatchedUsersContainer';
 
 class UserContainer extends Component {
 	constructor(props) {
@@ -224,7 +224,7 @@ class UserContainer extends Component {
 			<div>
 				<button onClick={this.getUsersByCat}>Search!</button>
 				{this.state.showMatches === true ? 
-					<MatchedUsers
+					<MatchedUsersContainer
 					matchedUsers={this.state.matchedUsers}
 					/>
 					:null}
@@ -243,9 +243,7 @@ class UserContainer extends Component {
 				: null}
 			</div>
 
-
-
-			)
+		)
 	}
 }
 
