@@ -3,8 +3,13 @@ import Button from 'react-bootstrap/Button';
 
 const EditUser = (props) => {
 	console.log(props.userToEdit, 'here is the props.userToEdit in EditUser');
-	console.log(props.userToEdit.gamesystem, 'here are the props.userToEdit.gamesystem');
-	console.log(props.userToEdit.gamesystem.dnd5e, 'here are the props.userToEdit.gamesystem.dnd5e');
+	console.log(props.userToEdit.dnd5e, 'here are the props.userToEdit.dnd5e');
+	console.log(props.userToEdit.pathfinder, 'here are the props.userToEdit.pathfinder');
+	console.log(props.userToEdit.starfinder, 'here are the props.userToEdit.starfinder');
+	console.log(props.userToEdit.dnd3_5, 'here are the props.userToEdit.dnd3_5');
+	console.log(props.userToEdit.callOfCthulu, 'here are the props.userToEdit.callOfCthulu');
+
+
 	return(
 		<div>
 			<h4> Edit User </h4>
@@ -22,19 +27,19 @@ const EditUser = (props) => {
 				What GameSystem do you enjoy playing? <br/>
 				
 				Dungeons and Dragons 5e:
-          		<input name="dnd5e" type="checkbox" value={props.userToEdit.gamesystem.dnd5e} checked={props.userToEdit.gamesystem.dnd5e === false ? false : true} onChange={props.handleInputChange}/> <br/>
+          		<input name="dnd5e" type="checkbox" value={props.userToEdit.dnd5e} checked={props.userToEdit.dnd5e === false ? false : true} onChange={props.handleInputChange}/> <br/>
           		Pathfinder:
-          		<input name="pathfinder" type="checkbox" value={props.userToEdit.gamesystem.pathfinder} checked={props.userToEdit.gamesystem.pathfinder === false ? false : true} onChange={props.handleInputChange}/> <br/>
+          		<input name="pathfinder" type="checkbox" value={props.userToEdit.pathfinder} checked={props.userToEdit.pathfinder === false ? false : true} onChange={props.handleInputChange}/> <br/>
           		StarFinder:
-          		<input name="starfinder" type="checkbox" value={props.userToEdit.gamesystem.starfinder} checked={props.userToEdit.gamesystem.starfinder === false ? false : true} onChange={props.handleInputChange}/> <br/>
+          		<input name="starfinder" type="checkbox" value={props.userToEdit.starfinder} checked={props.userToEdit.starfinder === false ? false : true} onChange={props.handleInputChange}/> <br/>
           		Dungeons and Dragons 3.5:
-          		<input name="dnd3_5" type="checkbox" value={props.userToEdit.gamesystem.dnd3_5} checked={props.userToEdit.gamesystem.dnd3_5 === false ? false : true} onChange={props.handleInputChange}/> <br/>
+          		<input name="dnd3_5" type="checkbox" value={props.userToEdit.dnd3_5} checked={props.userToEdit.dnd3_5 === false ? false : true} onChange={props.handleInputChange}/> <br/>
           		Call of Cthulhu:
-          		<input name="callOfCthulu" type="checkbox" value={props.userToEdit.gamesystem.callOfCthulu} checked={props.userToEdit.gamesystem.callOfCthulu === false ? false : true} onChange={props.handleInputChange}/> <br/>
+          		<input name="callOfCthulu" type="checkbox" value={props.userToEdit.callOfCthulu} checked={props.userToEdit.callOfCthulu === false ? false : true} onChange={props.handleInputChange}/> <br/>
           		</label>
           		<label>
           		Other:
-          		<input name="othergamesystem" type="text" value={props.userToEdit.gamesystem.other} onChange={props.handleFormChange} /> <br/>
+          		<input name="othergamesystem" type="text" value={props.userToEdit.other} onChange={props.handleFormChange} /> <br/>
           		</label>
           		<br/>
           		<br/>
@@ -42,13 +47,13 @@ const EditUser = (props) => {
           		<label>
           		Choose Your Preferred Gameplay Style: <br/>
           		Roleplay (gameplay with a focus on collaborative storytelling)
-          		<input name="roleplay" type="checkbox" value={props.userToEdit.gamestyle.roleplay} checked={props.userToEdit.gamestyle.roleplay === false ? false : true} onChange={props.handleInputChange} /> <br/>
+          		<input name="roleplay" type="checkbox" value={props.userToEdit.roleplay} checked={props.userToEdit.roleplay === false ? false : true} onChange={props.handleInputChange} /> <br/>
           		Combat (a game with a focus on fighting monsters and villians)
-          		<input name="combat" type="checkbox" value={props.userToEdit.gamestyle.combat} checked={props.userToEdit.gamestyle.combat === false ? false : true} onChange={props.handleInputChange} /> <br/>
+          		<input name="combat" type="checkbox" value={props.userToEdit.combat} checked={props.userToEdit.combat === false ? false : true} onChange={props.handleInputChange} /> <br/>
           		Dungeon Crawl (a game with a focus on exploring elaborate maps with traps, monsters, and treasure!)
-          		<input name="dungeonCrawl" type="checkbox" value={props.userToEdit.gamestyle.dungeonCrawl} checked={props.userToEdit.gamestyle.dungeonCrawl === false ? false : true} onChange={props.handleInputChange} /> <br/>
+          		<input name="dungeonCrawl" type="checkbox" value={props.userToEdit.dungeonCrawl} checked={props.userToEdit.dungeonCrawl === false ? false : true} onChange={props.handleInputChange} /> <br/>
           		Other
-          		<input name="othergamestyle" type="text" value={props.userToEdit.gamestyle.other} onChange={props.handleFormChange} /> <br/>
+          		<input name="othergamestyle" type="text" value={props.userToEdit.other} onChange={props.handleFormChange} /> <br/>
 				</label>
           		<br/>
           		<br/>

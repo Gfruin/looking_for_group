@@ -13,32 +13,32 @@ class UserContainer extends Component {
 			userId: props.id,
 			showUser: false,
 			showEdit: false,
-			userToEdit: props.userData
-				// {
-				// _id: props.id,
-				// gamemaster: props.state.gamemaster,
-				// playerCharacter: props.state.playerCharacter,
-				// lookingForGroup: props.state.lookingForGroup,
-				// gameMaterials: props.state.gameMaterials,
-				// experience: props.state.experience,
-				// description: props.state.description,
-				// firstName: props.state.firstName,
-				// lastName: props.state.lastName,
-				// address: props.state.address,
-				// latitude: props.state.latitude,
-				// longitude: props.state.longitude,
-				// zipCode: props.state.zipCode,
-				// dnd5e: props.state.dnd5e,
-				// pathfinder: props.state.pathfinder,
-				// starfinder: props.state.starfinder,
-				// dnd3_5: props.state.dnd3_5,
-				// callOfCthulu: props.state.callOfCthulu,
-				// other: props.state.other,
-				// roleplay: props.state.roleplay,
-				// combat: props.state.combat,
-				// dungeonCrawl: props.state.dungeonCrawl,
-				// other: props.state.other
-			//}
+			userToEdit:
+				{
+				_id: props.id,
+				gamemaster: props.userData.gamemaster,
+				playerCharacter: props.userData.playerCharacter,
+				lookingForGroup: props.userData.lookingForGroup,
+				gameMaterials: props.userData.gameMaterials,
+				experience: props.userData.experience,
+				description: props.userData.description,
+				firstName: props.userData.firstName,
+				lastName: props.userData.lastName,
+				address: props.userData.address,
+				latitude: props.userData.latitude,
+				longitude: props.userData.longitude,
+				zipCode: props.userData.zipCode,
+				dnd5e: props.userData.gamesystem.dnd5e,
+				pathfinder: props.userData.gamesystem.pathfinder,
+				starfinder: props.userData.gamesystem.starfinder,
+				dnd3_5: props.userData.gamesystem.dnd3_5,
+				callOfCthulu: props.userData.gamesystem.callOfCthulu,
+				other: props.userData.gamesystem.other,
+				roleplay: props.userData.gamestyle.roleplay,
+				combat: props.userData.gamestyle.combat,
+				dungeonCrawl: props.userData.gamestyle.dungeonCrawl,
+				other: props.userData.gamestyle.other
+			}
 		}
 		this.handleInputChange = this.handleInputChange.bind(this);
 	}
@@ -167,6 +167,9 @@ class UserContainer extends Component {
     const target = e.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
+   	// let gamesystem = {...this.state.gamesystem}
+	// gamesystem.dnd5e = true;
+	// this.setState({gamesystem})
 
     	this.setState({
     		userToEdit: {
@@ -191,9 +194,9 @@ class UserContainer extends Component {
 	}
 
 	render() {
-		console.log(this.state, 'here is the state in UserContainer');
-		console.log(this.state.showEdit, 'here is the this.state.showEdit in UserContainer');
-		console.log(this.state.userToEdit, 'here is the userToEdit in UserContainer');
+		// console.log(this.state, 'here is the state in UserContainer');
+		// console.log(this.state.showEdit, 'here is the this.state.showEdit in UserContainer');
+		// console.log(this.state.userToEdit, 'here is the userToEdit in UserContainer');
 		return(
 			<div>
 				{this.state.showEdit === true ? 
