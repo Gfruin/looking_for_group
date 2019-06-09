@@ -24,6 +24,13 @@ const EditUser = (props) => {
 				<br/>
 				<br/>
 				<label>
+					Looking For Group?
+          			<input name="lookingForGroup" type="checkbox" value={props.userToEdit.lookingForGroup} checked={props.userToEdit.lookingForGroup === false ? false : true} onChange={props.handleInputChange}/> <br/>
+				</label>
+				<br/>
+				<br/>
+
+				<label>
 				What GameSystem do you enjoy playing? <br/>
 				
 				Dungeons and Dragons 5e:

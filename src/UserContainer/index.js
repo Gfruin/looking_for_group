@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import EditUser from '../EditUser'
 import UserProfile from '../UserProfile'
 import Button from 'react-bootstrap/Button';
+import MatchedUsers from '../MatchedUsers';
 
 class UserContainer extends Component {
 	constructor(props) {
@@ -13,6 +14,7 @@ class UserContainer extends Component {
 			userId: props.id,
 			showUser: false,
 			showEdit: false,
+			showMatches: false,
 			userToEdit:
 				{
 				_id: props.id,
@@ -69,26 +71,47 @@ class UserContainer extends Component {
 	}
 
 	getUsersByCat = async () => {
-		const userResponse = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/v1/user/match') 
-			if(userResponse.status !== 200) {
-				throw Error(userResponse.statusText)
-			}
+		console.log('here is the getUsersByCat');
+		try{
+			const userResponse = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/v1/user/match/', {
+				credentials: 'include'
+			}) 
+				if(userResponse.status !== 200) {
+					throw Error(userResponse.statusText)
+				}
 			const foundUsers = await userResponse.json()
-			this.setState({matchedUsers: foundUsers.data})
+			console.log(foundUsers.data,'foundUsers.data in the getUsersByCat');
+			this.setState({
+				matchedUsers: foundUsers.data,
+			
+			})
 			console.log(this.state.matchedUsers, 'here are the matched users');
+			console.log('getUsersByCat has fired!');
+			this.setState({
+				showUser:false,
+				showEdit: false,
+				showMatches: true
+			})
+		} catch(err){
+			console.log(err);
+		}
 	}
 
 	getUserProfile = async () => {
-		const userProfileResponse = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/v1/user/' + this.state.userId)
-		if(userProfileResponse.status !== 200) {
-			throw Error(userProfileResponse.statusText)
+		try{
+			const userProfileResponse = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/v1/user/' + this.state.userId)
+			if(userProfileResponse.status !== 200) {
+				throw Error(userProfileResponse.statusText)
+			}
+			const foundUserProfile = await userProfileResponse.json()
+			this.setState({currentUser: foundUserProfile.data})
+			console.log(this.state.currentUser, 'here is the currentUser in UserContainer');
+			this.showUser()
+			console.log(this.state.showUser, 'here is the current showUser state');
+			} catch(err){
+				console.log(err);
+			}
 		}
-		const foundUserProfile = await userProfileResponse.json()
-		this.setState({currentUser: foundUserProfile.data})
-		console.log(this.state.currentUser, 'here is the currentUser in UserContainer');
-		this.showUser()
-		console.log(this.state.showUser, 'here is the current showUser state');
-	}
 
 	closeAndEdit = async (e) => {
 		e.preventDefault()
@@ -199,12 +222,19 @@ class UserContainer extends Component {
 		// console.log(this.state.userToEdit, 'here is the userToEdit in UserContainer');
 		return(
 			<div>
+				<button onClick={this.getUsersByCat}>Search!</button>
+				{this.state.showMatches === true ? 
+					<MatchedUsers
+					matchedUsers={this.state.matchedUsers}
+					/>
+					:null}
 				{this.state.showEdit === true ? 
 					<EditUser
 					userToEdit={this.state.userToEdit}
 					closeAndEdit={this.closeAndEdit}
 					handleInputChange={this.handleInputChange}
 					handleFormChange={this.handleFormChange}
+					getUsersByCat={this.getUsersByCat}
 					/>
 				: null}
 				{this.state.showUser === true ?
