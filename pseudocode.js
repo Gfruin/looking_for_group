@@ -27,3 +27,14 @@
 //         )
 //     })
 // }
+
+
+// 	return Object.keys(props.currentUser).map((currentUser, i) => {
+//         return (
+//             <div>
+//                 {props.currentUser[currentUser].gamesystem}
+//                 {props.currentUser[currentUser].gamestyle}
+//             </div>
+//         )
+//     })
+// }
