@@ -95,4 +95,32 @@
 // <button data-key={key} data-player-index={j} onClick={this.setMatchedUserShow}> View Player Details </button>
 
 
+///----------CODE FROM MATCHEDUSERSCONTAINER-----------//////
+
+// < div> 
+// 						<h3>D&D Fifth Edition Players:</h3>
+// 						<br/>
+// 							Usernames:
+// 							{this.state.matchedUsers.results.fifthEd.players[i].username}
+// 						<br/>
+// 							Gamestyle: Roleplay {this.state.matchedUsers.results.fifthEd.players[i].gamestyle.roleplay}
+// 						<br/>
+// 							Gamestyle: Combat {this.state.matchedUsers.results.fifthEd.players[i].gamestyle.combat}
+
+// 						<br/>
+// 							Gamestyle: Dungeon Crawl {this.state.matchedUsers.results.fifthEd.players[i].gamestyle.dungeonCrawl}
+
+// 						<br/>
+
+// 					</div>
+// 					<div></div>
+// 					<div></div>
+// 					<div></div>
+
+
+
+
+
+
+
 
