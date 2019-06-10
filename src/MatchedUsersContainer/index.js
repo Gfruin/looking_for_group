@@ -19,24 +19,34 @@ class MatchedUsersContainer extends Component {
 		console.log(e.currentTarget.dataset)
 
 		const key = e.currentTarget.dataset.key 
-		const playerIndex = e.currentTarget.dataset.playerIndex
 
-		console.log(key)
-		console.log(playerIndex)
+		if (e.currentTarget.dataset.gamemasterIndex) {
+			// move all gamemaster stuff into here 
+			const gamemasterIndex = e.currentTarget.dataset.gamemasterIndex
 
-		const player = this.state.matchedUsers.results[key].players[playerIndex]
+			const gamemaster = this.state.matchedUsers.results[key].gamemasters[gamemasterIndex]
 
-		console.log("here is the player:")
-		console.log(player)
-
-		const gamemasterIndex = e.currentTarget.dataset.gamemasterIndex
-
-		const gamemaster = this.state.matchedUsers.results[key].gamemasters[gamemasterIndex]
-
-		this.setState({
-			matchedUserShow: player,
+			this.setState({
 			matchedUserShowGM: gamemaster
 		})
+		} 
+
+		if (e.currentTarget.dataset.playerIndex) {
+			// move all player stuff into here 
+			const playerIndex = e.currentTarget.dataset.playerIndex
+
+			console.log(key)
+			console.log(playerIndex)
+
+			const player = this.state.matchedUsers.results[key].players[playerIndex]
+
+			console.log("here is the player:")
+			console.log(player)
+			this.setState({
+				matchedUserShow: player
+			})
+		}
+
 	}
 	clearMatchedUserShow = () => {
 		this.setState({
@@ -50,43 +60,56 @@ class MatchedUsersContainer extends Component {
 		console.log(this.state);
 
 		const gameSystemsList = (Object).keys(this.state.matchedUsers.results).map((key, i) => {
+
+
+			let playerList = null;
 			// console.log(this.state.matchedUsers.results.fifthEd.players[i].gamestyle.roleplay, 'here is the state of matchedUsers in MatchedUsersContainer');
-			
 
-			const playerList = this.state.matchedUsers.results[key].players.map((player, j) => {
-				return(
-					<div key={player._id}>
-						<div> {player.username} </div>
-						<button data-key={key} data-player-index={j} onClick={this.setMatchedUserShow}> View Player Details </button>
-					</div>
-				)
-			})
-
-			const gamemasterList = this.state.matchedUsers.results[key].gamemasters.map((gamemaster, k) => {
-				return(
-					<div key={gamemaster._id}>
-						<div> {gamemaster.username}</div>
-						<button data-key={key} data-gamemaster-index={k} onClick={this.setMatchedUserShow}> View GameMaster Details </button>
-					</div>
+			if (this.state.matchedUsers.results[key].players) {
+				playerList = this.state.matchedUsers.results[key].players.map((player, j) => {
+					return(
+						<div key={key + "-player-" + player._id}>
+							<div> {player.username} </div>
+							<button data-key={key} data-player-index={j} onClick={this.setMatchedUserShow}> View Player Details </button>
+						</div>
 					)
-			})
+				})
+			}
+			// need to figure out why the below doesn't work maybe something in the backend?
+
+			let gamemasterList = null;
+
+			if (this.state.matchedUsers.results[key].gamemasters) {
+				gamemasterList = this.state.matchedUsers.results[key].gamemasters.map((gamemaster, k) => {
+					return(
+						<div key={key + "-gamemaster-" + gamemaster._id}>
+							<div> {gamemaster.username}</div>
+							<button data-key={key} data-gamemaster-index={k} onClick={this.setMatchedUserShow}> View GameMaster Details </button>
+						</div>
+						)
+					})
+			}
 
 			return(
 				<div>
 					<strong key={"gamesystem-" + i}>
 						{key}
 					</strong>
-					<ul>
-						{playerList}
-						{gamemasterList}
-					</ul>
+					<div>
+						<p> Players: </p>
+						{playerList ? <div> {playerList} </div> : <p> No players matched for {key} </p>}
+					</div>
+					<div>
+						<p> Game Masters: </p>
+						{gamemasterList ? <div> {gamemasterList} </div> : <p> No game masters matched for {key} </p>}
+					</div>
 				</div>
 			)
 		})
 	
 		return(
 			<div> 
-				{!this.state.matchedUserShow ? <div>{gameSystemsList}</div> : null}
+				{!this.state.matchedUserShow ? <div>{gameSystemsList} </div> : null}
 				
 			 </div> 
 			)
