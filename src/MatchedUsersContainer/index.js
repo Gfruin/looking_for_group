@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import MatchedUser from '../ShowMatchedUser'
+import MatchedUserGM from '../ShowMatchedUserGM'
 
 class MatchedUsersContainer extends Component {
 	constructor(props) {
@@ -27,7 +28,8 @@ class MatchedUsersContainer extends Component {
 			const gamemaster = this.state.matchedUsers.results[key].gamemasters[gamemasterIndex]
 
 			this.setState({
-			matchedUserShowGM: gamemaster
+			// matchedUserShowGM: gamemaster,
+			matchedUserShow: gamemaster
 		})
 		} 
 
@@ -111,6 +113,7 @@ class MatchedUsersContainer extends Component {
 			<div> 
 				{!this.state.matchedUserShow ? <div>{gameSystemsList} </div> : null}
 				{this.state.matchedUserShow ? <MatchedUser matchedUserShow={this.state.matchedUserShow} clearMatchedUserShow={this.clearMatchedUserShow}/> : null}
+				{this.state.matchedUserShowGM ? <MatchedUserGM matchedUserShow={this.state.matchedUserShow} matchedUserShowGM={this.state.matchedUserShowGM} clearMatchedUserShow={this.clearMatchedUserShow}/> : null}
 				
 			 </div> 
 			)
