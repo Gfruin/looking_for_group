@@ -176,6 +176,19 @@ class UserContainer extends Component {
 		}
 	}
 
+	deleteUser = async (id, e) => {
+		e.preventDefault()
+		try {
+			const deleteUser = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/v1/user/' + this.state.userId, {
+				method: 'DELETE',
+				credentials: 'include'
+			});
+			const deleteUserJson = await deleteUser.json()
+			this.setState({userToEdit: this.state.userToEdit.filter((user, i ) => user._id !== this.state.userId)})
+		} catch(err) {
+			console.log(err);
+		}
+	}
 	handleFormChange = (e) => {
 		this.setState({
 			userToEdit: {
@@ -234,6 +247,8 @@ class UserContainer extends Component {
 					handleInputChange={this.handleInputChange}
 					handleFormChange={this.handleFormChange}
 					getUsersByCat={this.getUsersByCat}
+					deleteUser={this.deleteUser}
+					currentUser={this.state.currentUser}
 					/>
 				: null}
 				{this.state.showUser === true ?

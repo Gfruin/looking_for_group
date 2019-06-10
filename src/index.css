@@ -5,9 +5,20 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("https://imgur.com/osw4DHL");
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.editUserfields {
+	border: 2px solid black;
+	width: 50%;
+	margin: 0 auto;
+}
+
+#appbody {
+	background-image: url("https://imgur.com/osw4DHL");
 }

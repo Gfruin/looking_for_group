@@ -5,6 +5,7 @@ import Register from './Register'
 import Login from './Login'
 import Logout from './Logout'
 import UserContainer from './UserContainer'
+import Button from 'react-bootstrap/Button';
 
 
 class App extends Component {
@@ -91,6 +92,7 @@ class App extends Component {
       console.log(this.state.userToEdit, 'here is this.state.userToEdit');
       return (
         <div className="App">
+          <h1>Welcome to Looking For Group!</h1>
           {this.state.logged === false ? <Register userData={this.state.userData} login={this.login} showEdit={this.showEdit} stateshowEdit={this.state.showEdit}/> : null }
           {this.state.logged === false ? <Login userData={this.state.userData} login={this.login} /> : null }
           <br/>
