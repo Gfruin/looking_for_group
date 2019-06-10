@@ -69,43 +69,7 @@ class App extends Component {
       console.log(this.state.logged, 'here is this.state.logged after login');
     }
 
-    // setUserToEdit = (user, e) => {
-    //   console.log(user, 'here is the user in setUserToEdit in App.js');
-    //   this.setState({ 
-    //     // username: user.username,
-    //     // email: user.email,
-    //     // _id: user._id,
-    //     // logged: true, 
-    //     // registered: true,
-    //     _id: user,
-    //     gamemaster: user.gamemaster,
-    //     playerCharacter: user.playerCharacter,
-    //     lookingForGroup: user.lookingForGroup,
-    //     gameMaterials: user.gameMaterials,
-    //     experience: user.experience,
-    //     description: user.description,
-    //     firstName: user.firstName,
-    //     lastName: user.lastName,
-    //     address: user.location.address,
-    //     latitude: user.location.latitude,
-    //     longitude: user.location.longitude,
-    //     zipCode: user.location.zipCode,
-    //     dnd5e: user.gamesystem.dnd5e,
-    //     pathfinder: user.gamesystem.pathfinder,
-    //     starfinder: user.gamesystem.starfinder,
-    //     dnd3_5: user.gamesystem.dnd3_5,
-    //     callOfCthulu: user.gamesystem.callOfCthulu,
-    //     other: user.gamesystem.other,
-    //     roleplay: user.gamestyle.roleplay,
-    //     combat: user.gamestyle.combat,
-    //     dungeonCrawl: user.gamestyle.dungeonCrawl,
-    //     other: user.gamestyle.other,
-    //   // "userToEdit._id": _id,
-    //   // "userToEdit.username": username,
-    //   // "userToEdit.password": password,
-    //   // "userToEdit.email": email,
-    //   })
-    // }
+   
     logout = (email) => {
       this.setState({
         logged: false,
@@ -129,6 +93,7 @@ class App extends Component {
         <div className="App">
           {this.state.logged === false ? <Register userData={this.state.userData} login={this.login} showEdit={this.showEdit} stateshowEdit={this.state.showEdit}/> : null }
           {this.state.logged === false ? <Login userData={this.state.userData} login={this.login} /> : null }
+          <br/>
           <Logout logout={this.logout}/>
           {this.state.logged === true ? <UserContainer userData={this.state.userData} id={this.state._id} login={this.login} state={this.state} showEdit={this.showEdit} stateshowEdit={this.state.stateshowEdit} /> : null }
         </div>

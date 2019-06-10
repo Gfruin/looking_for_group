@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-// import ShowMatchedUser from '../ShowMatchedUser'
+import MatchedUser from '../ShowMatchedUser'
 
 class MatchedUsersContainer extends Component {
 	constructor(props) {
@@ -110,6 +110,7 @@ class MatchedUsersContainer extends Component {
 		return(
 			<div> 
 				{!this.state.matchedUserShow ? <div>{gameSystemsList} </div> : null}
+				{this.state.matchedUserShow ? <MatchedUser matchedUserShow={this.state.matchedUserShow} clearMatchedUserShow={this.clearMatchedUserShow}/> : null}
 				
 			 </div> 
 			)

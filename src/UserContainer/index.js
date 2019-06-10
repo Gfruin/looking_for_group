@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import EditUser from '../EditUser'
 import UserProfile from '../UserProfile'
-import Button from 'react-bootstrap/Button';
 import MatchedUsersContainer from '../MatchedUsersContainer';
 
 class UserContainer extends Component {
