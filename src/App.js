@@ -5,7 +5,7 @@ import Register from './Register'
 import Login from './Login'
 import Logout from './Logout'
 import UserContainer from './UserContainer'
-import Button from 'react-bootstrap/Button';
+
 
 
 class App extends Component {
@@ -92,12 +92,16 @@ class App extends Component {
       console.log(this.state.userToEdit, 'here is this.state.userToEdit');
       return (
         <div className="App">
-          <h1>Welcome to Looking For Group!</h1>
+          <h2 className="App-header"></h2>
+          <h1>Welcome to LookingForGroup!</h1>
+          <p> Hello and Welcome to LookingForGroup! If you're using this site now, then I'm sure you've run into the common problem of finding a group to play TableTop Roleplaying games with
+           This site is designed to aid you in your plans to find players or game masters! Good luck, and Happy Adventuring!</p>
+          <Logout logout={this.logout}/>
           {this.state.logged === false ? <Register userData={this.state.userData} login={this.login} showEdit={this.showEdit} stateshowEdit={this.state.showEdit}/> : null }
+          <br/>
           {this.state.logged === false ? <Login userData={this.state.userData} login={this.login} /> : null }
           <br/>
-          <Logout logout={this.logout}/>
-          {this.state.logged === true ? <UserContainer userData={this.state.userData} id={this.state._id} login={this.login} state={this.state} showEdit={this.showEdit} stateshowEdit={this.state.stateshowEdit} /> : null }
+          {this.state.logged === true ? <UserContainer userData={this.state.userData} id={this.state._id} login={this.login} state={this.state} showEdit={this.showEdit} stateshowEdit={this.state.stateshowEdit} logout={this.logout} /> : null }
         </div>
       )
   }

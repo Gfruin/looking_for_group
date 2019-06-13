@@ -88,7 +88,7 @@
 {this.state.matchedUserShow ? <ShowMatchedUser matchedUserShow={this.state.matchedUserShow} clearMatchedUserShow={this.clearMatchedUserShow} /> : null}
 
 
-
+{this.state.matchedUserShowGM ? <MatchedUserGM matchedUserShowGM={this.state.matchedUserShowGM}/> : null}
 
 
 //BELOW "data-player" uses something called a "data-set" LOOK THIS UPPPPPPPP
@@ -157,7 +157,61 @@
     // }
 
 
+//what my userContainer used to look like with nested objects in state
+
+// class UserContainer extends Component {
+// 	constructor() {
+// 		super();
+// 		this.state = {
+// 			users: [],
+// 			matchedUsers: [],
+// 			userToEdit: {
+// 				id: null,
+// 				gamemaster: false,
+// 				playerCharacter: true,
+// 				lookingForGroup: true,
+// 				gameMaterials: '',
+// 				experience: null,
+// 				description: '',
+// 				firstName: '',
+// 				lastName: '',
+// 				password: '',
+// 				username: {
+// 					type: '',
+// 					unique: true
+// 				},
+// 				email: {
+// 					type: '',
+// 					unique: true
+// 				},
+// 				location: {
+// 					address: '',
+// 					latitude: '',
+// 					longitude: '',
+// 					zipCode: ''
+// 				},
+// 				gamesystem: {
+// 					dnd5e: false,
+// 					pathfinder: false,
+// 					starfinder: false,
+// 					dnd3_5: false,
+// 					callOfCthulu: false,
+// 					other: '',
+// 				},
+// 				gamestyle: {
+// 					roleplay: false,
+// 					combat: false,
+// 					dungeonCrawl: false,
+// 					other: ''
+// 				},
+// 				showUser: false,
+
+// 			}
+// 		}
+// 	}
 
 
+//delete route binding
 
+// <button onClick={props.deleteUser.bind(null, props.userToEdit._id)}>Delete Profile</button> 
 

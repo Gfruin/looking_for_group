@@ -20,6 +20,8 @@ const MatchedUserGM = (props) => {
 			<p> Dungeon Crawl: {props.matchedUserShow.gamestyle.dungeonCrawl.toString()}</p>
 			<p> Years of Experience: {props.matchedUserShow.experience}</p>
 			<p> Game Materials: {props.matchedUserShow.gameMaterials}</p>
+			<p> Description: {props.matchedUserShow.description}</p>
+			
 			<button onClick={props.clearMatchedUserShow}> Return to List </button>
 
 		</div>

@@ -9,7 +9,7 @@ class UserContainer extends Component {
 		this.state = {
 			users: [],
 			matchedUsers: [],
-			currentUser: null,
+			currentUser: [],
 			userId: props.id,
 			showUser: false,
 			showEdit: false,
@@ -96,21 +96,24 @@ class UserContainer extends Component {
 		}
 	}
 
-	getUserProfile = async () => {
-		try{
-			const userProfileResponse = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/v1/user/' + this.state.userId)
-			if(userProfileResponse.status !== 200) {
-				throw Error(userProfileResponse.statusText)
-			}
-			const foundUserProfile = await userProfileResponse.json()
-			this.setState({currentUser: foundUserProfile.data})
-			console.log(this.state.currentUser, 'here is the currentUser in UserContainer');
-			this.showUser()
-			console.log(this.state.showUser, 'here is the current showUser state');
-			} catch(err){
-				console.log(err);
-			}
-		}
+	// getUserProfile = async () => {
+	// 	try{
+	// 		const userProfileResponse = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/v1/user/' + this.state.userId, {
+	// 			method: 'GET',
+	// 			credentials: 'include'
+	// 		})
+	// 		if(userProfileResponse.status !== 200) {
+	// 			throw Error(userProfileResponse.statusText)
+	// 		}
+	// 		const foundUserProfile = await userProfileResponse.json()
+	// 		this.setState({currentUser: foundUserProfile.data})
+	// 		console.log(this.state.currentUser, 'here is the currentUser in UserContainer');
+	// 		// this.showUser()
+	// 		console.log(this.state.showUser, 'here is the current showUser state');
+	// 		} catch(err){
+	// 			console.log(err);
+	// 		}
+	// 	}
 
 	closeAndEdit = async (e) => {
 		e.preventDefault()
@@ -176,15 +179,17 @@ class UserContainer extends Component {
 		}
 	}
 
-	deleteUser = async (id, e) => {
-		e.preventDefault()
+	deleteUser = async (id, props, e) => {
+		// e.preventDefault()
 		try {
 			const deleteUser = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/v1/user/' + this.state.userId, {
 				method: 'DELETE',
 				credentials: 'include'
 			});
+			console.log('here is teh deleteUser');
 			const deleteUserJson = await deleteUser.json()
-			this.setState({userToEdit: this.state.userToEdit.filter((user, i ) => user._id !== this.state.userId)})
+			this.props.logout()
+			// this.setState({userToEdit: this.state.userToEdit.filter((userToEdit, i) => userToEdit._id !== this.state.userId)})
 		} catch(err) {
 			console.log(err);
 		}
@@ -240,6 +245,7 @@ class UserContainer extends Component {
 					matchedUsers={this.state.matchedUsers}
 					/>
 					:null}
+					<br/>
 				{this.state.showEdit === true ? 
 					<EditUser
 					userToEdit={this.state.userToEdit}
@@ -247,8 +253,9 @@ class UserContainer extends Component {
 					handleInputChange={this.handleInputChange}
 					handleFormChange={this.handleFormChange}
 					getUsersByCat={this.getUsersByCat}
-					deleteUser={this.deleteUser}
 					currentUser={this.state.currentUser}
+					// showUser={this.showUser}
+					deleteUser={this.deleteUser}
 					/>
 				: null}
 				{this.state.showUser === true ?
