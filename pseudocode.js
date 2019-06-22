@@ -211,6 +211,38 @@
 // 	}
 
 
+//below -------vvvvv------ Taken from App.js---------
+ // this.setState({
+      //   username: user.username,
+      //   email: user.email,
+      //   _id: user._id,
+      //   logged: true, 
+      //   registered: true,
+      //   // _id: user,
+      //   gamemaster: user.gamemaster,
+      //   playerCharacter: user.playerCharacter,
+      //   lookingForGroup: user.lookingForGroup,
+      //   gameMaterials: user.gameMaterials,
+      //   experience: user.experience,
+      //   description: user.description,
+      //   firstName: user.firstName,
+      //   lastName: user.lastName,
+      //   address: user.location.address,
+      //   latitude: user.location.latitude,
+      //   longitude: user.location.longitude,
+      //   zipCode: user.location.zipCode,
+      //   dnd5e: user.gamesystem.dnd5e,
+      //   pathfinder: user.gamesystem.pathfinder,
+      //   starfinder: user.gamesystem.starfinder,
+      //   dnd3_5: user.gamesystem.dnd3_5,
+      //   callOfCthulu: user.gamesystem.callOfCthulu,
+      //   other: user.gamesystem.other,
+      //   roleplay: user.gamestyle.roleplay,
+      //   combat: user.gamestyle.combat,
+      //   dungeonCrawl: user.gamestyle.dungeonCrawl,
+      //   other: user.gamestyle.other,
+      // })
+
 //delete route binding
 
 // <button onClick={props.deleteUser.bind(null, props.userToEdit._id)}>Delete Profile</button> 
