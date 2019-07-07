@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import Button from 'react-bootstrap/Button';
 
 class Register extends Component {
 	constructor(){
@@ -54,7 +54,7 @@ class Register extends Component {
 					<input type="text" name="username" onChange={this.handleChange}/> <br/> <br/>
 					Password:
 					<input type="password" name="password" onChange={this.handleChange}/> <br/> <br/>
-					<button>Submit</button>
+					<Button variant="outline-danger">Submit</Button>
 				</form>
 			</div>
 		)
