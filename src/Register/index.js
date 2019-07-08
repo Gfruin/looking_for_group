@@ -48,23 +48,23 @@ class Register extends Component {
 
 	render() {
 		return(
-			<Container>
-			  <Row>
-			  	<Col sm={2}>
+			<Container className="register">
+			  <Row className="register-info">
+			  	<Col sm="auto">
 					<h3>Register</h3>
 				</Col>
 			  </Row>
-			  <Row>
+			  <Row className="register-info">
 				<form onSubmit={this.handleSubmit}>
-					<Col sm={6}>
+					<Col sm="auto">
 					<h5>Email:</h5> 
 					<input type="text" name="email" placeholder="example@example.com" onChange={this.handleChange}/> <br/> <br/>
 					</Col>
-					<Col sm={6}>
+					<Col sm="auto">
 					<h5>Username:</h5>
 					<input type="text" name="username" placeholder="GameKing99" onChange={this.handleChange}/> <br/> <br/>
 					</Col>
-					<Col sm={6}>
+					<Col sm="auto">
 					<h5>Password:</h5> 
 					<input type="password" name="password" placeholder="PrancingPony" onChange={this.handleChange}/> <br/> <br/>
 					</Col>

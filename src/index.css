@@ -22,3 +22,12 @@ code {
 #appbody {
 	background-image: url("https://imgur.com/osw4DHL");
 }
+
+.register {
+  border: 2px solid black;
+
+}
+
+.register-info {
+  justify-content: center;
+}
