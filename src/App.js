@@ -69,7 +69,7 @@ class App extends Component {
           <Logout logout={this.logout}/>
           {this.state.logged === false ? <Login userData={this.state.userData} login={this.login} /> : null }
           <br/>
-          {this.state.logged === false ? <Register userData={this.state.userData} login={this.login} showEdit={this.showEdit} stateshowEdit={this.state.showEdit}/> : null }
+          {this.state.logged === true && this.state.registered === false ? <Register userData={this.state.userData} login={this.login} showEdit={this.showEdit} stateshowEdit={this.state.showEdit}/> : null }
           <br/>
           {this.state.logged === true ? <UserContainer userData={this.state.userData} id={this.state._id} login={this.login} state={this.state} showEdit={this.showEdit} stateshowEdit={this.state.stateshowEdit} logout={this.logout} /> : null }
         </div>
