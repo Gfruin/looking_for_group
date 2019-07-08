@@ -1,13 +1,14 @@
 .App {
   text-align: center;
-  /*background-image: url("https://i.imgur.com/osw4DHL.jpg");*/
-  background-color: #45B39D;
+  background-image: url("https://i.imgur.com/osw4DHL.jpg");
+  /*background-color: #45B39D;*/
   background-size: cover;
   background-repeat: no-repeat;
-  height: 2000px;
+  /*height: 2000px;*/
   color: white;
   text-transform: uppercase;
   font-weight: bold;
+  
 }
 
 .App-logo {
