@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 class Register extends Component {
 	constructor(){
@@ -45,18 +48,33 @@ class Register extends Component {
 
 	render() {
 		return(
-			<div>
-				<h3>Register</h3>
+			<Container>
+			  <Row>
+			  	<Col sm={2}>
+					<h3>Register</h3>
+				</Col>
+			  </Row>
+			  <Row>
 				<form onSubmit={this.handleSubmit}>
-					Email:
-					<input type="text" name="email" onChange={this.handleChange}/> <br/> <br/>
-					Username:
-					<input type="text" name="username" onChange={this.handleChange}/> <br/> <br/>
-					Password:
-					<input type="password" name="password" onChange={this.handleChange}/> <br/> <br/>
+					<Col sm={6}>
+					<h5>Email:</h5> 
+					<input type="text" name="email" placeholder="example@example.com" onChange={this.handleChange}/> <br/> <br/>
+					</Col>
+					<Col sm={6}>
+					<h5>Username:</h5>
+					<input type="text" name="username" placeholder="GameKing99" onChange={this.handleChange}/> <br/> <br/>
+					</Col>
+					<Col sm={6}>
+					<h5>Password:</h5> 
+					<input type="password" name="password" placeholder="PrancingPony" onChange={this.handleChange}/> <br/> <br/>
+					</Col>
 					<Button variant="outline-danger">Submit</Button>
 				</form>
+			  </Row>
+			    
+			<div>
 			</div>
+				</Container>
 		)
 	}
 }
