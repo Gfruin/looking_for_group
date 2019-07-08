@@ -67,9 +67,9 @@ class App extends Component {
           <p> Hello and Welcome to LookingForGroup! If you're using this site now, then I'm sure you've run into the common problem of finding a group to play TableTop Roleplaying games with
            This site is designed to aid you in your plans to find players or game masters! Good luck, and Happy Adventuring!</p>
           <Logout logout={this.logout}/>
-          {this.state.logged === false ? <Register userData={this.state.userData} login={this.login} showEdit={this.showEdit} stateshowEdit={this.state.showEdit}/> : null }
-          <br/>
           {this.state.logged === false ? <Login userData={this.state.userData} login={this.login} /> : null }
+          <br/>
+          {this.state.logged === false ? <Register userData={this.state.userData} login={this.login} showEdit={this.showEdit} stateshowEdit={this.state.showEdit}/> : null }
           <br/>
           {this.state.logged === true ? <UserContainer userData={this.state.userData} id={this.state._id} login={this.login} state={this.state} showEdit={this.showEdit} stateshowEdit={this.state.stateshowEdit} logout={this.logout} /> : null }
         </div>
