@@ -27,12 +27,17 @@ class Login extends Component {
 				}
 			})
 			console.log(loginResponse, 'here is the loginResponse');
+
+			if(loginResponse.status === 500) {
+				this.props.showRegister()
+				console.log("here is the showRegister");
+			}
 			const parsedResponse = await loginResponse.json()
-			console.log(parsedResponse, 'here is the parsedResponse');
-			if(loginResponse.status != 500) {
+			if(parsedResponse.status != 500) {
 				this.props.login(parsedResponse.data)
 
 			} 
+			console.log(parsedResponse, 'here is the parsedResponse');
 			// this.props.setUserToEdit(parsedResponse.data)
 			console.log('is this working?');
 			// console.log(this.props.setUserToEdit(parsedResponse.data), 'here is the props of setUserToEdit in Login');
