@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
 
 class Register extends Component {
 	constructor(){
@@ -48,33 +49,25 @@ class Register extends Component {
 
 	render() {
 		return(
-			<Container className="register">
-			  <Row className="register-info">
-			  	<Col sm="auto">
-					<h3>Register</h3>
-				</Col>
-			  </Row>
-			  <Row className="register-info">
-				<form onSubmit={this.handleSubmit}>
-					<Col sm="auto">
-					<h5>Email:</h5> 
-					<input type="text" name="email" placeholder="example@example.com" onChange={this.handleChange}/> <br/> <br/>
-					</Col>
-					<Col sm="auto">
-					<h5>Username:</h5>
-					<input type="text" name="username" placeholder="GameKing99" onChange={this.handleChange}/> <br/> <br/>
-					</Col>
-					<Col sm="auto">
-					<h5>Password:</h5> 
-					<input type="password" name="password" placeholder="PrancingPony" onChange={this.handleChange}/> <br/> <br/>
-					</Col>
-					<Button variant="outline-danger">Submit</Button>
-				</form>
-			  </Row>
-			    
-			<div>
-			</div>
-				</Container>
+			<Container className="register-info">
+			<h4>Please Register</h4>
+				<Form onSubmit={this.handleSubmit}>
+
+					<Form.Group controlId="formBasicEmail">
+						<Form.Label>Email address</Form.Label>
+	    				<Form.Control type="text" name="email" placeholder="Enter email" onChange={this.handleChange} />
+					</Form.Group>
+					<Form.Group controlId="formBasicUsername">
+						<Form.Label>Username</Form.Label>
+						<Form.Control type="text" name="username" placeholder="Enter username" onChange={this.handleChange} />
+					</Form.Group>
+					<Form.Group controlId="formBasicPassword">
+						<Form.Label>Password</Form.Label>
+						<Form.Control type="password" name="password" placeholder="Enter password" onChange={this.handleChange} />
+					</Form.Group>
+					<Button variant="outline-danger" type="submit">Submit</Button>
+				</Form>
+			</Container>
 		)
 	}
 }
