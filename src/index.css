@@ -20,7 +20,6 @@ code {
 }
 
 #appbody {
-	background-image: url("https://imgur.com/osw4DHL");
 }
 
 .register {
@@ -30,4 +29,22 @@ code {
 
 .register-info {
   justify-content: center;
+  border: 15px solid green;
+  padding: 50px;
+  margin: 20px;
+  background-color: #92BD88;
 }
+
+.Home-Header {
+
+}
+
+.Welcome {
+  /*width: 300px;*/
+  border: 15px solid green;
+  padding: 50px;
+  margin: 20px;
+  background-color: #92BD88;
+  transition-property: 
+}
+

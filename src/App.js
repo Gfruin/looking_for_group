@@ -73,27 +73,32 @@ class App extends Component {
       console.log(this.state);
       console.log(this.state.userToEdit, 'here is this.state.userToEdit');
       return (
-        <Container className="App">
-          <Row>
-            <Col>
-            </Col>
-            <Col sm={2}>
-              Log-Out
-              <Logout logout={this.logout}/>
-            </Col>
-          </Row>
-       
-          <h2 className="App-header"></h2>
-          <h1>Welcome to LookingForGroup!</h1>
-          <p> Hello and Welcome to LookingForGroup! If you're using this site now, then I'm sure you've run into the common problem of finding a group to play TableTop Roleplaying games with
-           This site is designed to aid you in your plans to find players or game masters! Good luck, and Happy Adventuring!</p>
-          {this.state.logged === false ? <Login userData={this.state.userData} login={this.login} showRegister={this.showRegister} /> : null }
-          <br/>
-          {this.state.showRegister === true && this.state.registered === false ? <Register userData={this.state.userData} login={this.login} showEdit={this.showEdit} stateshowEdit={this.state.showEdit}/> : null }
-          <br/>
-          {this.state.logged === true ? <UserContainer userData={this.state.userData} id={this.state._id} login={this.login} state={this.state} showEdit={this.showEdit} stateshowEdit={this.state.stateshowEdit} logout={this.logout} /> : null }
-        
-        </Container>
+        <div className="App">
+          <Container>
+            <Row>
+              <Col>
+              </Col>
+              <Col></Col>
+              <Col sm={2}>
+                <Logout logout={this.logout}/>
+              </Col>
+            </Row>
+         
+            <h2 className="App-header"></h2>
+            <div className="Home-Header">
+              <h1>Welcome to LookingForGroup!</h1>
+            </div>
+            <div className="Welcome">
+              <p> Hello and Welcome to LookingForGroup! If you're using this site now, then I'm sure you've run into the common problem of finding a group to play TableTop Roleplaying games with
+             This site is designed to aid you in your plans to find players or game masters! Good luck, and Happy Adventuring!</p>
+            </div>
+            {this.state.logged === false ? <Login userData={this.state.userData} login={this.login} showRegister={this.showRegister} /> : null }
+            <br/>
+            {this.state.showRegister === true && this.state.registered === false ? <Register userData={this.state.userData} login={this.login} showEdit={this.showEdit} stateshowEdit={this.state.showEdit}/> : null }
+            <br/>
+            {this.state.logged === true ? <UserContainer userData={this.state.userData} id={this.state._id} login={this.login} state={this.state} showEdit={this.showEdit} stateshowEdit={this.state.stateshowEdit} logout={this.logout} /> : null }
+          </Container>
+        </div>
       )
   }
 }

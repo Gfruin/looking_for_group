@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
-
-
-
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 class Logout extends Component {
 	constructor() {
 		super();
@@ -28,10 +27,12 @@ class Logout extends Component {
 	}
 	render() {
 		return(
-			<form onSubmit={this.handleSubmit}>
-			<button>Logout!</button>
-			</form>
-
+			
+			<Form onSubmit={this.handleSubmit}>
+			  <Button variant="primary" type="submit">
+			    LogOut
+			  </Button>
+			</Form>
 
 			)
 	}
