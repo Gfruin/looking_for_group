@@ -29,7 +29,7 @@ class Logout extends Component {
 		return(
 			
 			<Form onSubmit={this.handleSubmit}>
-			  <Button variant="primary" type="submit">
+			  <Button variant="outline-danger" type="submit">
 			    LogOut
 			  </Button>
 			</Form>

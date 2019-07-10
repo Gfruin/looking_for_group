@@ -1,11 +1,11 @@
 import React from 'react'
-
+import Button from 'react-bootstrap/Button';
 
 const MatchedUserGM = (props) => {
 	console.log(props.matchedUserShow);
 	return (
 		<div>
-			<button onClick={props.clearMatchedUserShow}> Return to List </button>
+			<Button  variant="outline-danger" onClick={props.clearMatchedUserShow}> Return to List </Button>
 			<h2> Username: {props.matchedUserShow.username} </h2>
 			<p> Email: {props.matchedUserShow.email}</p>
 			<h3>GameSystems</h3>
@@ -22,7 +22,7 @@ const MatchedUserGM = (props) => {
 			<p> Game Materials: {props.matchedUserShow.gameMaterials}</p>
 			<p> Description: {props.matchedUserShow.description}</p>
 			
-			<button onClick={props.clearMatchedUserShow}> Return to List </button>
+			<Button variant="outline-danger" onClick={props.clearMatchedUserShow}> Return to List </Button>
 
 		</div>
 		)

@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import MatchedUser from '../ShowMatchedUser'
 import MatchedUserGM from '../ShowMatchedUserGM'
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
 
 class MatchedUsersContainer extends Component {
 	constructor(props) {
@@ -72,7 +74,7 @@ class MatchedUsersContainer extends Component {
 					return(
 						<div key={key + "-player-" + player._id}>
 							<div> {player.username} </div>
-							<button data-key={key} data-player-index={j} onClick={this.setMatchedUserShow}> View Player Details </button>
+							<Button variant="outline-danger" data-key={key} data-player-index={j} onClick={this.setMatchedUserShow}> View Player Details </Button>
 						</div>
 					)
 				})
@@ -86,7 +88,7 @@ class MatchedUsersContainer extends Component {
 					return(
 						<div key={key + "-gamemaster-" + gamemaster._id}>
 							<div> {gamemaster.username}</div>
-							<button data-key={key} data-gamemaster-index={k} onClick={this.setMatchedUserShow}> View GameMaster Details </button>
+							<Button variant="outline-danger" data-key={key} data-gamemaster-index={k} onClick={this.setMatchedUserShow}> View GameMaster Details </Button>
 						</div>
 						)
 					})
@@ -110,12 +112,14 @@ class MatchedUsersContainer extends Component {
 		})
 	
 		return(
-			<div> 
-				{!this.state.matchedUserShow ? <div>{gameSystemsList} </div> : null}
-				{this.state.matchedUserShow ? <MatchedUser matchedUserShow={this.state.matchedUserShow} clearMatchedUserShow={this.clearMatchedUserShow}/> : null}
-				{this.state.matchedUserShowGM ? <MatchedUserGM matchedUserShow={this.state.matchedUserShow} matchedUserShowGM={this.state.matchedUserShowGM} clearMatchedUserShow={this.clearMatchedUserShow}/> : null}
+			<Container className="matchedUsers">
+				<div> 
+					{!this.state.matchedUserShow ? <div>{gameSystemsList} </div> : null}
+					{this.state.matchedUserShow ? <MatchedUser matchedUserShow={this.state.matchedUserShow} clearMatchedUserShow={this.clearMatchedUserShow}/> : null}
+					{this.state.matchedUserShowGM ? <MatchedUserGM matchedUserShow={this.state.matchedUserShow} matchedUserShowGM={this.state.matchedUserShowGM} clearMatchedUserShow={this.clearMatchedUserShow}/> : null}
 				
-			 </div> 
+			 	</div>
+			 </Container>
 			)
 		// {!this.state.matchedUserShow
 		//  ? 

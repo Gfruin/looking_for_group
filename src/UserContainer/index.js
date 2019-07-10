@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import EditUser from '../EditUser'
 import UserProfile from '../UserProfile'
 import MatchedUsersContainer from '../MatchedUsersContainer';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
 
 class UserContainer extends Component {
 	constructor(props) {
@@ -239,7 +241,7 @@ class UserContainer extends Component {
 		// console.log(this.state.userToEdit, 'here is the userToEdit in UserContainer');
 		return(
 			<div>
-				<button onClick={this.getUsersByCat}>Search!</button>
+				<Button variant="outline-danger" onClick={this.getUsersByCat}>Search!</Button>
 				{this.state.showMatches === true ? 
 					<MatchedUsersContainer
 					matchedUsers={this.state.matchedUsers}

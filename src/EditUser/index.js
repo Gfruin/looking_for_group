@@ -15,10 +15,10 @@ const EditUser = (props) => {
 
 	return(
 		<div>
-			<h4> Edit User </h4>
-				<Button onClick={props.deleteUser.bind(null, props.userToEdit._id)}>Delete User</Button> 
+			<h3 className="editUserfields"> Edit User </h3>
+				<Button variant="outline-danger" onClick={props.deleteUser.bind(null, props.userToEdit._id)}>Delete User</Button> 
 			
-				<p> Please fill out the form here with all the relevant information to your desired gaming experience! Our matchmaking is based on YOUR inputs!</p>
+				<p className="editUserfields"> Please fill out the form here with all the relevant information to your desired gaming experience! Our matchmaking is based on YOUR inputs!</p>
 			<Form onSubmit={props.closeAndEdit}>
 				<div className="editUserfields">
 					<label>
@@ -134,7 +134,7 @@ const EditUser = (props) => {
 				</div>
           		<br/>
 
-				<Button>Submit</Button>
+				<Button variant="outline-danger" type="submit">Submit</Button>
 				<br/>
 				<br/>
 			</Form>
