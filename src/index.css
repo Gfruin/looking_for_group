@@ -23,16 +23,19 @@ code {
 }
 
 .register {
-  border: 2px solid black;
+  /*border: 2px solid black;*/
+  color:#676A67;
 
 }
 
 .register-info {
   justify-content: center;
-  border: 15px solid green;
+  /*border: 15px solid black;*/
   padding: 50px;
   margin: 20px;
-  background-color: #92BD88;
+  background-color: #3C423B;
+  opacity: 0.9;
+  color:#F92727;
 }
 
 .Home-Header {
@@ -40,11 +43,21 @@ code {
 }
 
 .Welcome {
-  /*width: 300px;*/
-  border: 15px solid green;
+  justify-content: center;
+  /*border: 15px solid black;*/
   padding: 50px;
   margin: 20px;
-  background-color: #92BD88;
-  transition-property: 
+  background-color: #3C423B;
+  opacity: 0.9;
+  color:#F92727;
 }
 
+.login {
+  justify-content: center;
+  /*border: 15px solid black;*/
+  padding: 50px;
+  margin: 20px;
+  background-color: #3C423B;
+  opacity: 0.9;
+  color:#F92727;
+}

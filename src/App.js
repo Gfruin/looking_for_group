@@ -22,7 +22,9 @@ class App extends Component {
       password: '',
       _id: '',
       showEdit: false,
-      showRegister: false
+      showRegister: false,
+      showLogin: true,
+      showWelcome: true
     }
   }
   componentDidMount() {
@@ -38,7 +40,8 @@ class App extends Component {
         email: user.email,
         _id: user._id,
         logged: true, 
-        registered: true
+        registered: true,
+        showWelcome: false
       })
 
       console.log(this.state.logged, 'here is this.state.logged after login');
@@ -50,7 +53,9 @@ class App extends Component {
         logged: false,
         email: email,
         registered: false,
-        showRegister: false
+        showRegister: false,
+        showLogin: true,
+        showWelcome: true
       })
     }
 
@@ -65,7 +70,9 @@ class App extends Component {
     }
     showRegister = () => {
       this.setState({
-        showRegister: true
+        showRegister: true,
+        showLogin: false,
+        showWelcome: false
       })
       console.log(this.state);
     }
@@ -86,13 +93,13 @@ class App extends Component {
          
             <h2 className="App-header"></h2>
             <div className="Home-Header">
-              <h1>Welcome to LookingForGroup!</h1>
+              {this.state.showWelcome === true ? <h1 className="Welcome">Welcome to LookingForGroup!</h1> : null }
             </div>
-            <div className="Welcome">
+            {this.state.showWelcome === true ? <div className="Welcome">
               <p> Hello and Welcome to LookingForGroup! If you're using this site now, then I'm sure you've run into the common problem of finding a group to play TableTop Roleplaying games with
              This site is designed to aid you in your plans to find players or game masters! Good luck, and Happy Adventuring!</p>
-            </div>
-            {this.state.logged === false ? <Login userData={this.state.userData} login={this.login} showRegister={this.showRegister} /> : null }
+            </div> : null}
+            {this.state.logged === false && this.state.showLogin === true ? <Login userData={this.state.userData} login={this.login} showRegister={this.showRegister} /> : null }
             <br/>
             {this.state.showRegister === true && this.state.registered === false ? <Register userData={this.state.userData} login={this.login} showEdit={this.showEdit} stateshowEdit={this.state.showEdit}/> : null }
             <br/>

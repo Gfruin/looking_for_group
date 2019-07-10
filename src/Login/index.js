@@ -1,4 +1,7 @@
 import React, {Component} from 'react'
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
 
 
 class Login extends Component {
@@ -47,16 +50,20 @@ class Login extends Component {
 	}
 	render() {
 		return(
-			<div>
+			<Container className="login">
 				<h3>Login</h3>
-				<form onSubmit={this.handleSubmit}>
-				Email:
-				<input type="text" name="email" onChange={this.handleChange}/> <br/> <br/>
-				Password:
-				<input type="password" name="password" onChange={this.handleChange}/> <br/> <br/>
-				<button>Login</button>
-				</form>
-			</div>
+				<Form onSubmit={this.handleSubmit}>
+				<Form.Group controlId="formBasicEmail">
+					<Form.Label>Email address</Form.Label>
+	    			<Form.Control type="text" name="email" placeholder="Enter email" onChange={this.handleChange} />
+				</Form.Group>
+				<Form.Group controlId="formBasicPassword">
+						<Form.Label>Password</Form.Label>
+						<Form.Control type="password" name="password" placeholder="Enter password" onChange={this.handleChange} />
+				</Form.Group>
+					<Button variant="outline-danger" type="submit">Login</Button>
+				</Form>
+			</Container>
 		)
 	}
 }
