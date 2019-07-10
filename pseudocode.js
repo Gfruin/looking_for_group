@@ -247,3 +247,10 @@
 
 // <button onClick={props.deleteUser.bind(null, props.userToEdit._id)}>Delete Profile</button> 
 
+
+
+//Edit User Checkboxes in Bootstrap
+
+<Form.Group controlId="formBasicCheckbox">
+              <Form.Check type="checkbox" label="Dungeons and Dragons Fifth Edition" value={props.userToEdit.dnd5e} checked={props.userToEdit.dnd5e === false ? false : true} onChange={props.handleInputChange} />
+            </Form.Group>

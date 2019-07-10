@@ -1,5 +1,7 @@
 import React from 'react'
-
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
 
 const EditUser = (props) => {
 	console.log(props.userToEdit._id, 'here is the userToEdit._id');
@@ -14,10 +16,10 @@ const EditUser = (props) => {
 	return(
 		<div>
 			<h4> Edit User </h4>
-				<button onClick={props.deleteUser.bind(null, props.userToEdit._id)}>Delete User</button> 
+				<Button onClick={props.deleteUser.bind(null, props.userToEdit._id)}>Delete User</Button> 
 			
 				<p> Please fill out the form here with all the relevant information to your desired gaming experience! Our matchmaking is based on YOUR inputs!</p>
-			<form onSubmit={props.closeAndEdit}>
+			<Form onSubmit={props.closeAndEdit}>
 				<div className="editUserfields">
 					<label>
           			GameMaster or Player (You can choose both!): <br/>
@@ -40,7 +42,6 @@ const EditUser = (props) => {
 				<div className="editUserfields">
 					<label>
 					What GameSystem do you enjoy playing? <br/>
-				
 					Dungeons and Dragons 5e:
           			<input name="dnd5e" type="checkbox" value={props.userToEdit.dnd5e} checked={props.userToEdit.dnd5e === false ? false : true} onChange={props.handleInputChange}/> <br/>
           			<a href="https://dnd.wizards.com/dungeons-and-dragons/what-is-dd" target="_blank"> Want to learn more?</a> <br/>
@@ -133,10 +134,10 @@ const EditUser = (props) => {
 				</div>
           		<br/>
 
-				<button>Submit</button>
+				<Button>Submit</Button>
 				<br/>
 				<br/>
-			</form>
+			</Form>
 				
 		</div>
 

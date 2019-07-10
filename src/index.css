@@ -14,9 +14,13 @@ code {
 }
 
 .editUserfields {
-	border: 2px solid black;
-	width: 50%;
-	margin: 0 auto;
+  justify-content: center;
+  /*border: 15px solid black;*/
+  padding: 50px;
+  margin: 20px;
+  background-color: #3C423B;
+  opacity: 0.9;
+  color:#F92727;
 }
 
 #appbody {
@@ -61,3 +65,5 @@ code {
   opacity: 0.9;
   color:#F92727;
 }
+
+
