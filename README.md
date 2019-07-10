@@ -1,68 +1,125 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# LookingForGroup
 
-## Available Scripts
+------------
+USER STORIES:
+------------
+1. User will be able to create account
+2. User will be able to define account as either “GameMaster” (GM) or “Player” (PC)
+3. User will be able to categorize themselves with these markers:
+    - Looking for group
+    - Looking for GM 
+    - Looking for PC’s
+    - Game Environment(Online, In-person, Mixed)
+    - Will be able to set their zip code
+4. User will be able to define these categories:
+    - Party size
+    - Is available? switch on and off
+    - Skillset
+    - Preferred gamestyle(roleplay heavy, rules oriented, combat heavy, dungeon crawl)
+    - Gamemaster materials (miniatures, maps, dice, books, etc)
+    - Description
+    - Experience
+5. User will be able to search the database of users based on these categories to find groups
+6. User will be be able to see users with similar categories
+7. User-GM will be able to create game pages based on current games and invite PC-users to the page
 
-In the project directory, you can run:
+------------
+NICE-TO-HAVES:
+------------
 
-### `npm start`
+1. User will be able to upload images to their posts, group pages, and profiles
+2. Ratings for PC’s and GM’s and comments 
+3. Users will be able to Direct Message(DM) other users to communicate
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+------------
+STRETCH GOALS:
+------------
+1. Consume the D&D 5e and let Users create basic characters based on the data
+2. Users will be able to search information about spells, items, monsters based on search term
+3. User-GM will be able to create monster stat-blocks
+4. Users will be able to create posts to discuss D&D
+5. Users will be able to have conversations with multiple participants
+6. Users will be able to send out push notifications based on current conversations
+7. Users will be able to see location markers of other users nearby through Google maps API
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+------------
+APP FEATURES
+------------
 
-### `npm test`
+CURRENT FEATURES ----
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. This app will use user provided location data. This data will then use the Google Maps API and render the locations on the user match-making page
 
-### `npm run build`
+2. Model One-User <----
+- GM? boolean
+- Available?
+- Location
+- Game System
+- Game Style
+- Game Materials
+- Experience 
+- Description
+- First Name
+- Last Name
+- Username
+- Email
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+3. Model Two-Group <----
+- GM Owner
+- PC's
+- Title
+- Description
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. Model Three- Join_Requests <-----
+- PC id
+- Group id
+- Join: Boolean, null
 
-### `npm run eject`
+FORTHCOMING FEATURES ----
+1. Model Four-Posts
+2. Model Five-Messenger
+3. Model Six-Conversation
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+--------
+HTTP ENDPOINTS
+--------
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Home Page:
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- GET ‘/login’ Gets the login page
+- GET ‘/logout ‘ Logs the user out
+- POST ‘/login ‘ Logs user in
+- POST ‘/register’ Registers a user 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Users:
 
-## Learn More
+- GET ‘/user’ gets all the user (shows index page based on search results)
+- POST ‘/user’ creates a user profile page
+- DELETE ‘/user/:id’ deletes user profile
+- PUT ‘/user/:id’ updates user profile
+- GET ‘/user/:id’ show user page
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Groups:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- GET ‘/group’ gets the user group page
+- POST '/group' creates a group
+- PUT '/group/:id' updates the group page
+- DELETE /'group/:id' deletes group page
+- GET '/group/join' gets the user group page of join requests
+- POST '/group/join' adds users to the group page
 
-### Code Splitting
+-----------
+WireFrames
+-----------
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+https://imgur.com/3scgktI
+https://imgur.com/5ntk2k3
+https://imgur.com/gwPkIek
+https://imgur.com/COudxap
+https://imgur.com/kPFZXyh
+https://imgur.com/vW0J8YD
+https://imgur.com/MNzubrB
+https://imgur.com/AggKr1j
+https://imgur.com/8C30ykE
+https://imgur.com/Xh5OMnH
