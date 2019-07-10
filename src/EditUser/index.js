@@ -25,6 +25,8 @@ const EditUser = (props) => {
           			GameMaster or Player (You can choose both!): <br/>
           			GameMaster:
           			<input name="gamemaster" type="checkbox" value={props.userToEdit.gamemaster} checked={props.userToEdit.gamemaster === false ? false : true} onChange={props.handleInputChange}/> <br/>
+          			<br/>
+					<br/>
           			Player:
           			<input defaultValue={props.userToEdit.playerCharacter} name="playerCharacter" type="checkbox"  checked={props.userToEdit.playerCharacter === false ? false : true} onChange={props.handleInputChange}/> <br/>
 					</label>
@@ -44,20 +46,31 @@ const EditUser = (props) => {
 					What GameSystem do you enjoy playing? <br/>
 					Dungeons and Dragons 5e:
           			<input name="dnd5e" type="checkbox" value={props.userToEdit.dnd5e} checked={props.userToEdit.dnd5e === false ? false : true} onChange={props.handleInputChange}/> <br/>
-          			<a href="https://dnd.wizards.com/dungeons-and-dragons/what-is-dd" target="_blank"> Want to learn more?</a> <br/>
+          			<a href="https://dnd.wizards.com/dungeons-and-dragons/what-is-dd" target="_blank"> Want to learn more?</a> 
+          			<br/>
+          			<br/>
+
           			Pathfinder:
           			<input name="pathfinder" type="checkbox" value={props.userToEdit.pathfinder} checked={props.userToEdit.pathfinder === false ? false : true} onChange={props.handleInputChange}/> <br/>
-          			<a href="https://en.wikipedia.org/wiki/Pathfinder_Roleplaying_Game" target="_blank"> Want to learn more?</a> <br/>
+          			<a href="https://en.wikipedia.org/wiki/Pathfinder_Roleplaying_Game" target="_blank"> Want to learn more?</a> 
+          			<br/>
+          			<br/>
           			StarFinder:
           			<input name="starfinder" type="checkbox" value={props.userToEdit.starfinder} checked={props.userToEdit.starfinder === false ? false : true} onChange={props.handleInputChange}/> <br/>
-          			<a href="https://paizo.com/starfinder" target="_blank"> Want to learn more?</a> <br/>
+          			<a href="https://paizo.com/starfinder" target="_blank"> Want to learn more?</a> 
+          			<br/>
+          			<br/>
           			Dungeons and Dragons 3.5:
           			<input name="dnd3_5" type="checkbox" value={props.userToEdit.dnd3_5} checked={props.userToEdit.dnd3_5 === false ? false : true} onChange={props.handleInputChange}/> <br/>
-          			<a href="http://www.d20srd.org/index.htm" target="_blank"> Want to learn more?</a> <br/>
+          			<a href="http://www.d20srd.org/index.htm" target="_blank"> Want to learn more?</a> 
+          			<br/>
+          			<br/>
           			
           			Call of Cthulhu:
           			<input name="callOfCthulu" type="checkbox" value={props.userToEdit.callOfCthulu} checked={props.userToEdit.callOfCthulu === false ? false : true} onChange={props.handleInputChange}/> <br/>
-          			<a href="https://www.chaosium.com/call-of-cthulhu-rpg/" target="_blank"> Want to learn more?</a> <br/>
+          			<a href="https://www.chaosium.com/call-of-cthulhu-rpg/" target="_blank"> Want to learn more?</a> 
+          			<br/>
+          			<br/>
           			
           			</label>
           			<label>
@@ -70,15 +83,25 @@ const EditUser = (props) => {
 				<div className="editUserfields">
 
           			<label>
-          			Choose Your Preferred Gameplay Style: <br/>
+          			Choose Your Preferred Gameplay Style: 
+          			<br/>
+          			<br/> 
           			Roleplay  	(gameplay with a focus on collaborative storytelling) 
-          			<input name="roleplay" type="checkbox" value={props.userToEdit.roleplay} checked={props.userToEdit.roleplay === false ? false : true} onChange={props.handleInputChange} /> <br/>
+          			<input name="roleplay" type="checkbox" value={props.userToEdit.roleplay} checked={props.userToEdit.roleplay === false ? false : true} onChange={props.handleInputChange} /> 
+          			<br/>
+          			<br/>
           			Combat   	(a game with a focus on fighting monsters and villians)
-          			<input name="combat" type="checkbox" value={props.userToEdit.combat} checked={props.userToEdit.combat === false ? false : true} onChange={props.handleInputChange} /> <br/>
+          			<input name="combat" type="checkbox" value={props.userToEdit.combat} checked={props.userToEdit.combat === false ? false : true} onChange={props.handleInputChange} /> 
+          			<br/>
+          			<br/>
           			Dungeon Crawl    	(a game with a focus on exploring elaborate maps with traps, monsters, and treasure!)
-          			<input name="dungeonCrawl" type="checkbox" value={props.userToEdit.dungeonCrawl} checked={props.userToEdit.dungeonCrawl === false ? false : true} onChange={props.handleInputChange} /> <br/>
+          			<input name="dungeonCrawl" type="checkbox" value={props.userToEdit.dungeonCrawl} checked={props.userToEdit.dungeonCrawl === false ? false : true} onChange={props.handleInputChange} /> 
+          			<br/>
+          			<br/>
           			Other
-          			<input name="othergamestyle" type="text" value={props.userToEdit.other} onChange={props.handleFormChange} /> <br/>
+          			<input name="othergamestyle" type="text" value={props.userToEdit.other} onChange={props.handleFormChange} /> 
+          			<br/>
+          			<br/>
 					</label>
 				</div>
           		<br/>
@@ -86,7 +109,9 @@ const EditUser = (props) => {
 				<div className="editUserfields">
 					<label>
 					Years of Experience
-					<input type="number" name="experience" onChange={props.handleFormChange} value={props.userToEdit.experience}/> <br/>
+					<input type="number" name="experience" onChange={props.handleFormChange} value={props.userToEdit.experience}/> 
+          			<br/>
+					<br/>
 					</label>
           		</div>
           			<br/>
@@ -95,7 +120,9 @@ const EditUser = (props) => {
 
 				<label>
 				What Game Materials do you have? (i.e. dice, maps, miniatures, etc)
-				<textarea type="text" name="gameMaterials" onChange={props.handleFormChange} value={props.userToEdit.gameMaterials}/> <br/>
+				<textarea type="text" name="gameMaterials" onChange={props.handleFormChange} value={props.userToEdit.gameMaterials}/> 
+          		<br/>
+				<br/>
 				</label>
           		</div>
           		<br/>
