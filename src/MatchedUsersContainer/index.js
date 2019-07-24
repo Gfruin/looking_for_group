@@ -62,7 +62,7 @@ class MatchedUsersContainer extends Component {
 
 		console.log("MatchedUsersContainer STATE:")
 		console.log(this.state);
-
+		// grab the matched users by game system by using object keys
 		const gameSystemsList = (Object).keys(this.state.matchedUsers.results).map((key, i) => {
 
 
