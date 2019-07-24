@@ -50,20 +50,22 @@ class Login extends Component {
 	}
 	render() {
 		return(
-			<Container className="login">
-				<h3>Login</h3>
-				<Form onSubmit={this.handleSubmit}>
-				<Form.Group controlId="formBasicEmail">
-					<Form.Label>Email address</Form.Label>
-	    			<Form.Control type="text" name="email" placeholder="Enter email" onChange={this.handleChange} />
-				</Form.Group>
-				<Form.Group controlId="formBasicPassword">
-						<Form.Label>Password</Form.Label>
-						<Form.Control type="password" name="password" placeholder="Enter password" onChange={this.handleChange} />
-				</Form.Group>
-					<Button variant="outline-danger" type="submit">Login</Button>
-				</Form>
-			</Container>
+			<div className="login-info">
+				<Container className="login">
+					<h3>Login</h3>
+					<Form className="login-info" onSubmit={this.handleSubmit}>
+					<Form.Group controlId="formBasicEmail">
+						<Form.Label>Email address</Form.Label>
+	    				<Form.Control type="text" name="email" placeholder="Enter email" onChange={this.handleChange} />
+					</Form.Group>
+					<Form.Group controlId="formBasicPassword">
+							<Form.Label>Password</Form.Label>
+							<Form.Control type="password" name="password" placeholder="Enter password" onChange={this.handleChange} />
+					</Form.Group>
+						<Button variant="outline-danger" type="submit">Login</Button>
+					</Form>
+				</Container>
+			</div>
 		)
 	}
 }
