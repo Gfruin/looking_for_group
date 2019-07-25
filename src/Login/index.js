@@ -50,10 +50,9 @@ class Login extends Component {
 	}
 	render() {
 		return(
-			<div className="login-info">
 				<Container className="login">
 					<h3>Login</h3>
-					<Form className="login-info" onSubmit={this.handleSubmit}>
+					<Form onSubmit={this.handleSubmit}>
 					<Form.Group controlId="formBasicEmail">
 						<Form.Label>Email address</Form.Label>
 	    				<Form.Control type="text" name="email" placeholder="Enter email" onChange={this.handleChange} />
@@ -65,7 +64,6 @@ class Login extends Component {
 						<Button variant="outline-danger" type="submit">Login</Button>
 					</Form>
 				</Container>
-			</div>
 		)
 	}
 }
